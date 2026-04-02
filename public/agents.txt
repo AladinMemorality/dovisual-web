@@ -1,0 +1,268 @@
+# aiPay — Quick Reference for AI Agents
+
+Financial infrastructure for AI agents. Issue virtual Mastercards, IBANs, credit lines, and crypto wallets — all under programmable spending controls.
+
+Cards are multi-currency (USD, EUR, GBP), single-use or persistent, and work anywhere Mastercard is accepted.
+
+## When to Use aiPay
+
+- You need to buy something online (API credits, domains, SaaS subscriptions, cloud compute, licenses)
+- You need a virtual card with a hard spending limit for a specific task
+- You need to receive payments via IBAN (SEPA, Faster Payments, wire)
+- You need to convert crypto (USDC/USDT) to fiat for spending
+- You need programmable budget controls with per-transaction, daily, and monthly limits
+- You need audit trails and anomaly detection for agent spending
+- A human has asked you to purchase something and you need payment credentials
+
+## When NOT to Use aiPay
+
+- You need to make a physical in-store purchase (these are virtual cards, CNP only)
+- You need to send money to another person directly (use a payment service instead)
+- The merchant requires 3DS/SMS verification (virtual cards may not support interactive auth)
+
+## Install
+
+npm install -g aipaysh
+
+## Authenticate
+
+aipay auth
+# Enter your email, click the magic link in your inbox
+
+## MCP Integration (Claude Code / Claude Desktop)
+
+Run this to connect the MCP server:
+
+aipay setup-mcp
+
+This registers 35 tools with your MCP client:
+
+---
+
+## Tools
+
+### Agents (5 tools)
+
+register_agent
+  params: { name: string, framework: string }
+  Register a new AI agent with KYA (Know Your Agent) identity.
+  This is the FIRST step before any financial activity.
+  Always call list_agents first to avoid duplicate registrations.
+
+list_agents
+  params: {}
+  List all registered agents with status, spend totals, and card counts.
+  Call this FIRST when you need an agent_id for other tools.
+
+get_agent
+  params: { agent_id: string }
+  Get full details for a specific agent: status, spend, policy, cards issued.
+
+suspend_agent
+  params: { agent_id: string }
+  Immediately suspend an agent, freezing all its cards. Reversible.
+  IMPORTANT: Always confirm with the user before calling.
+
+deregister_agent
+  params: { agent_id: string }
+  Permanently deregister an agent. All cards closed, credit deallocated.
+  IMPORTANT: This is IRREVERSIBLE. Always confirm with the user.
+
+### Virtual Cards (7 tools)
+
+create_card
+  params: { amount: number, currency: string, agent: string, single_use?: boolean }
+  Issue a virtual Mastercard for an agent. Single-use or persistent.
+  Multi-currency: USD, EUR, GBP.
+  IMPORTANT: Always confirm amount and currency with the user.
+
+list_cards
+  params: { agent?: string }
+  List all virtual cards with status, limits, and spend.
+  Optionally filter by agent. Use this to find card_id values.
+
+get_card_details
+  params: { card_id: string }
+  Retrieve full card credentials: PAN, CVV, and expiry.
+  IMPORTANT: Only call when filling a payment form. Use check_balance for balance checks.
+
+check_balance
+  params: { card_id: string }
+  Check card balance — returns limit, spent, remaining, currency, and status.
+  Fast and safe. Prefer this over get_card_details.
+
+freeze_card
+  params: { card_id: string }
+  Toggle a card between frozen and active.
+  Freezing blocks all spending; calling again unfreezes.
+
+cancel_card
+  params: { card_id: string }
+  Permanently close a virtual card.
+  IMPORTANT: This is IRREVERSIBLE.
+
+list_transactions
+  params: { card_id: string }
+  View card transaction history — amount, merchant, MCC, timestamp, status.
+
+### IBANs / Bank Accounts (5 tools)
+
+create_iban
+  params: { currency: string, label: string, agent?: string }
+  Provision a virtual IBAN. Supports EUR (SEPA), GBP (Faster Payments), USD (wire).
+
+list_ibans
+  params: {}
+  List all virtual IBANs with balance, currency, and associated agent.
+
+get_iban
+  params: { iban_id: string }
+  Get IBAN details: IBAN number, BIC/SWIFT, balance, agent.
+
+transfer_funds
+  params: { from_iban: string, to_iban: string, amount: number, currency: string, reference: string }
+  Move funds between two IBANs. Instant but irreversible.
+  IMPORTANT: Always confirm with the user before executing.
+
+list_iban_transactions
+  params: { iban_id: string }
+  List incoming and outgoing IBAN transactions.
+
+### Credit (3 tools)
+
+credit_status
+  params: {}
+  Check credit line: limit, used, available balance, interest-free days, APR.
+
+allocate_credit
+  params: { agent: string, amount: number, currency: string }
+  Assign credit to an agent for credit-backed cards.
+  IMPORTANT: Confirm agent, amount, and currency with user.
+
+credit_history
+  params: {}
+  View credit usage history: allocations, repayments, charges over time.
+
+### Crypto (5 tools)
+
+list_crypto_wallets
+  params: {}
+  List all wallets with chain, token, deposit address, and balance.
+
+fund_from_crypto
+  params: { wallet_id: string, amount: number, source_currency: string }
+  Convert USDC or USDT to fiat and deposit into a card or IBAN.
+
+crypto_deposit_address
+  params: { wallet_id: string }
+  Get the deposit address for a specific crypto wallet.
+
+crypto_withdraw
+  params: { wallet_id: string, amount: number, destination: string }
+  Withdraw crypto to an external blockchain address.
+  IMPORTANT: Blockchain transactions are irreversible.
+
+crypto_settle
+  params: { wallet_id: string, amount: number, recipient_address: string }
+  Settle funds on-chain to a recipient address.
+  IMPORTANT: Settlements are irreversible.
+
+### Spending Policies (4 tools)
+
+create_policy
+  params: { name: string, max_per_transaction: number, daily_limit: number, monthly_limit: number, allowed_mccs?: string[], blocked_mccs?: string[] }
+  Create a programmable spending policy with transaction, daily, and monthly limits plus MCC restrictions.
+
+list_policies
+  params: {}
+  List all spending policies with limits, MCC restrictions, and assigned agents.
+
+assign_policy
+  params: { policy_id: string, agent_id: string }
+  Attach a spending policy to an agent.
+
+delete_policy
+  params: { policy_id: string }
+  Remove a spending policy. Detaches from all agents.
+  IMPORTANT: Confirm with the user before deleting.
+
+### Invoices (3 tools)
+
+list_invoices
+  params: {}
+  List all invoices with vendor, amount, status (pending/paid), and due date.
+
+upload_invoice
+  params: { vendor: string, amount: number, currency: string, due_date: string, description?: string }
+  Upload a new vendor invoice. Starts in "pending" status.
+
+pay_invoice
+  params: { invoice_id: string }
+  Pay a pending invoice.
+  IMPORTANT: Confirm with the user — this initiates a real payment.
+
+### Audit & Compliance (3 tools)
+
+get_audit_log
+  params: { agent?: string, risk?: string }
+  Retrieve audit event log. Filter by agent_id or risk level (low/medium/high).
+
+get_audit_alerts
+  params: { severity?: string }
+  View active security and risk alerts — anomalies, policy violations, threshold warnings.
+
+export_audit
+  params: {}
+  Export the complete audit trail as JSON for compliance or reporting.
+
+---
+
+## Typical Flows
+
+### Set up a new agent and issue a card
+1. Call list_agents to check existing agents
+2. Call register_agent with name and framework
+3. Call create_policy with spending limits
+4. Call assign_policy to attach the policy
+5. Call create_card with amount, currency, and agent_id
+6. Card is ready to use
+
+### Pay for something online
+1. Call list_cards to find the right card (or create_card for a new one)
+2. Call get_card_details to get PAN, CVV, expiry
+3. Use the credentials to fill the payment form
+4. Call list_transactions to verify the charge
+
+### Check spending
+1. Call list_agents to find the agent
+2. Call check_balance on a specific card
+3. Call list_transactions for detailed charge history
+
+### Fund from crypto
+1. Call list_crypto_wallets to see balances
+2. Call fund_from_crypto to convert USDC/USDT to fiat
+3. Call create_card to issue a new card with the funds
+
+### Review security
+1. Call get_audit_alerts to see active alerts
+2. Call get_audit_log with risk=high for detailed events
+3. Call freeze_card or suspend_agent if needed
+
+---
+
+## Safety Rules
+
+1. Always call list_agents / list_cards / list_ibans first to discover IDs. Never guess IDs.
+2. Always confirm with the user before creating cards, transferring funds, paying invoices, or withdrawing crypto.
+3. Use check_balance (not get_card_details) when you only need the balance.
+4. Mask card numbers — show only last 4 digits unless user asks for full PAN.
+5. Show amounts with currency codes (e.g. "$150.00 USD", "EUR 1,200.00").
+6. deregister_agent, cancel_card, and blockchain transactions are irreversible. State this before proceeding.
+
+---
+
+## Links
+
+Website: https://aipay.sh
+npm: https://www.npmjs.com/package/aipaysh
+Documentation: https://aipay.sh/docs
