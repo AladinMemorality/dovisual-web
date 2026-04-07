@@ -1,0 +1,53 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to VPS
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          HOST: ${{ secrets.DEPLOY_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H $HOST >> ~/.ssh/known_hosts 2>/dev/null
+
+          # Copy standalone build
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            .next/standalone/ root@$HOST:/opt/dovisual-web/
+
+          # Copy static assets
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            .next/static/ root@$HOST:/opt/dovisual-web/.next/static/
+
+          # Copy public assets
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            public/ root@$HOST:/opt/dovisual-web/public/
+
+          # Restart the service
+          ssh -i ~/.ssh/deploy_key root@$HOST '
+            systemctl restart dovisual-web
+            echo "dovisual-web deployed and restarted"
+          '
