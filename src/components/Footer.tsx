@@ -32,11 +32,11 @@ export function Footer() {
               className="text-sm font-bold tracking-tight flex items-center gap-2"
             >
               <Logo />
-              aiPay<span className="text-primary">.</span>sh
+              DoVisual
             </a>
             <p className="text-xs text-zinc-600 max-w-[260px]">
-              Payment infrastructure for autonomous AI agents. Cards, IBANs,
-              credit, and crypto in one stack.
+              Mobile-first cloud platform for developers. Terminal, containers,
+              AI — from your phone.
             </p>
           </div>
           <div className="space-y-3">
@@ -90,7 +90,7 @@ export function Footer() {
         </div>
         <div className="mt-10 pt-6 border-t border-white/[0.06] flex justify-between items-center text-xs text-zinc-600">
           <span>&copy; 2026 DoVisual. All rights reserved.</span>
-          <span>Built for the agentic era.</span>
+          <span>Your cloud. Your command.</span>
         </div>
       </div>
     </footer>

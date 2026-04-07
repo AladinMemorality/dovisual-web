@@ -8,44 +8,44 @@ import { GetStartedButton } from "@/components/InstallModal";
 export const metadata: Metadata = {
   title: "Integrate",
   description:
-    "Integrate AI agent payments via REST API, the dovisual npm package, or 35 MCP tools for Claude and other agent runtimes.",
+    "Integrate with DoVisual via REST API, the dovi CLI, or the mobile app.",
 };
 
 const integrations = [
   {
     label: "REST API",
-    title: "api.dovisual.com/v1",
-    desc: "Call the API directly from any language. Bearer token auth, JSON request/response, 9 resource groups. Works with Python, Go, Ruby, Java — anything that speaks HTTP.",
-    install: "curl -X POST https://api.dovisual.com/v1/cards",
+    title: "https://<domain>/api/*",
+    desc: "Call the API directly from any language. JWT bearer token auth, JSON responses. Works from Python, Go, Node.js — anything that speaks HTTP.",
+    install: "curl https://<domain>/api/stats",
     features: [
-      "Bearer token authentication",
+      "JWT bearer token authentication",
       "JSON request and response",
       "Works from any language or framework",
-      "9 resource groups, 40+ endpoints",
+      "9 endpoint groups, full server control",
     ],
   },
   {
-    label: "npm Package",
-    title: "dovisual",
-    desc: "Install the CLI globally for terminal access, or use it to start the MCP server programmatically. Authenticate once, then script everything.",
+    label: "CLI",
+    title: "npm install -g dovisual",
+    desc: "Install the CLI for server setup and configuration. Authenticate, configure, and manage your VPS from any terminal.",
     install: "npm install -g dovisual",
     features: [
-      "8 CLI command groups",
-      "MCP server built in",
-      "Magic link or API key auth",
+      "8 CLI commands for full control",
+      "One-command server setup",
+      "PIN-based authentication",
       "Node.js 18+ and Bun supported",
     ],
   },
   {
-    label: "MCP Tools",
-    title: "dovi setup-mcp",
-    desc: "One command connects 35 tools to Claude Code, Claude Desktop, or any MCP-compatible agent. Zero-code integration — the agent uses tools directly.",
-    install: "dovi setup-mcp",
+    label: "Mobile App",
+    title: "DoVisual App",
+    desc: "Download the DoVisual app for iOS/Android. Full terminal, Docker, files, AI — everything in your pocket.",
+    install: "Download from App Store / Play Store",
     features: [
-      "35 tools across 8 categories",
-      "Works with Claude Code and Desktop",
-      "Destructive actions require approval",
-      "Read-only actions execute instantly",
+      "Terminal sessions on the go",
+      "Docker container management",
+      "File browser and editor",
+      "Claude Code AI integration",
     ],
   },
 ];
@@ -61,13 +61,12 @@ export default function SdksPage() {
           <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-tight mb-4">
             Integrate with
             <br />
-            any stack.
+            any workflow.
           </h1>
           <p className="text-zinc-500 max-w-xl text-base leading-relaxed">
             Use the REST API directly, the{" "}
-            <span className="font-mono text-zinc-300">dovisual</span> npm
-            package, or connect via MCP. No SDK wrapper needed — the API is the
-            SDK.
+            <span className="font-mono text-zinc-300">dovi</span> CLI
+            for server setup, or the DoVisual mobile app for daily management.
           </p>
         </div>
       </section>
@@ -121,20 +120,20 @@ export default function SdksPage() {
           <div className="space-y-3">
             <SectionLabel>Quick Start</SectionLabel>
             <h3 className="text-2xl font-bold tracking-tight leading-tight">
-              Create a card
+              Fetch your containers
               <br />
               with one request.
             </h3>
             <p className="text-zinc-500 text-sm">
-              Authenticate with a Bearer token, POST to{" "}
-              <span className="font-mono text-primary">/v1/cards</span>, and get
-              back a live virtual Mastercard. Works from any language.
+              Authenticate with a JWT token, GET{" "}
+              <span className="font-mono text-primary">/api/docker/containers</span>, and get
+              back the full state of every Docker container on your server.
             </p>
           </div>
           <Terminal label="app.ts">
             <div className="space-y-0">
               <div className="text-zinc-600">
-                {"// Authenticate first: dovi auth token"}
+                {"// Get JWT token via: POST /api/auth/callback"}
               </div>
               <div>
                 <span className="text-blue-400">const</span>
@@ -146,7 +145,7 @@ export default function SdksPage() {
               </div>
               <div>
                 <span className="text-yellow-400">
-                  {"  'https://api.dovisual.com/v1/cards'"}
+                  {"  'https://<domain>/api/docker/containers'"}
                 </span>
                 <span className="text-zinc-300">,</span>
               </div>
@@ -155,7 +154,7 @@ export default function SdksPage() {
               </div>
               <div>
                 <span className="text-zinc-300">{"    method: "}</span>
-                <span className="text-yellow-400">{"'POST'"}</span>
+                <span className="text-yellow-400">{"'GET'"}</span>
                 <span className="text-zinc-300">,</span>
               </div>
               <div>
@@ -169,43 +168,9 @@ export default function SdksPage() {
                 <span className="text-yellow-400">
                   {"`Bearer ${token}`"}
                 </span>
-                <span className="text-zinc-300">,</span>
               </div>
               <div>
-                <span className="text-yellow-400">
-                  {"      'Content-Type'"}
-                </span>
-                <span className="text-zinc-300">: </span>
-                <span className="text-yellow-400">
-                  {"'application/json'"}
-                </span>
-              </div>
-              <div>
-                <span className="text-zinc-300">{"    },"}</span>
-              </div>
-              <div>
-                <span className="text-zinc-300">
-                  {"    body: JSON.stringify({"}
-                </span>
-              </div>
-              <div>
-                <span className="text-zinc-300">{"      amount: "}</span>
-                <span className="text-blue-400">200</span>
-                <span className="text-zinc-300">,</span>
-              </div>
-              <div>
-                <span className="text-zinc-300">{"      currency: "}</span>
-                <span className="text-yellow-400">{"'eur'"}</span>
-                <span className="text-zinc-300">,</span>
-              </div>
-              <div>
-                <span className="text-zinc-300">{"      agent: "}</span>
-                <span className="text-yellow-400">
-                  {"'procurement-bot'"}
-                </span>
-              </div>
-              <div>
-                <span className="text-zinc-300">{"    })"}</span>
+                <span className="text-zinc-300">{"    }"}</span>
               </div>
               <div>
                 <span className="text-zinc-300">{"  }"}</span>
@@ -216,12 +181,12 @@ export default function SdksPage() {
               <div>&nbsp;</div>
               <div>
                 <span className="text-blue-400">const</span>
-                <span className="text-zinc-300"> card = </span>
+                <span className="text-zinc-300"> containers = </span>
                 <span className="text-blue-400">await</span>
                 <span className="text-zinc-300"> res.json();</span>
               </div>
               <div className="text-zinc-600">
-                {"// → { id, last_four, pan, cvv, status: 'active' }"}
+                {"// → [{ name, status, image, ports, ... }]"}
               </div>
             </div>
           </Terminal>
@@ -232,28 +197,28 @@ export default function SdksPage() {
 
       {/* Framework Integration */}
       <section className="max-w-[1120px] mx-auto px-8 py-28">
-        <SectionLabel>Framework Integration</SectionLabel>
+        <SectionLabel>Works With</SectionLabel>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-12">
-          Works with your agent framework.
+          Fits into your existing stack.
         </h2>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             {
-              name: "LangChain",
-              desc: "Use MCP tools directly or wrap REST API calls as custom LangChain tools for agent financial access.",
+              name: "Docker Compose",
+              desc: "Auto-detection of Docker Compose projects. Manage multi-container stacks, rebuild services, and stream logs from the dashboard.",
             },
             {
-              name: "CrewAI",
-              desc: "Connect via MCP to give your crew autonomous spending. Each agent gets its own card and budget policy.",
+              name: "Claude Code",
+              desc: "AI-powered server management built in. Run Claude Code sessions directly from the mobile app for intelligent troubleshooting and automation.",
             },
             {
-              name: "AutoGen",
-              desc: "Function calling via MCP tools or direct REST API integration for multi-agent financial workflows.",
+              name: "Cloudflare",
+              desc: "DNS and SSL integration for your domains. DoVisual works seamlessly behind Cloudflare proxies with automatic certificate management.",
             },
             {
               name: "Any Language",
-              desc: "The REST API works from Python, Go, Ruby, Java, or any HTTP client. No SDK dependency required.",
+              desc: "The REST API works from Python, Go, Ruby, Java, or any HTTP client. No SDK dependency required — just standard HTTP requests.",
             },
           ].map((fw) => (
             <div
@@ -281,7 +246,7 @@ export default function SdksPage() {
             Start integrating today.
           </h2>
           <p className="text-zinc-500 mt-4 mb-8 max-w-md mx-auto text-sm relative z-10">
-            REST API, CLI, or MCP — pick your path and ship in minutes.
+            REST API, CLI, or mobile app — pick your path and get started in minutes.
           </p>
           <div className="flex justify-center gap-3 relative z-10">
             <a
@@ -290,7 +255,7 @@ export default function SdksPage() {
             >
               Read the docs
             </a>
-            <GetStartedButton className="px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:brightness-110 transition-all text-sm">
+            <GetStartedButton className="px-6 py-3 bg-primary text-black font-semibold rounded-lg hover:brightness-110 transition-all text-sm">
               Get started free
             </GetStartedButton>
           </div>

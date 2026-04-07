@@ -6,6 +6,7 @@ import ProvisionForm from "@/components/admin/ProvisionForm";
 import {
   getUser,
   adminDeprovision,
+  adminDeleteDnsRecord,
   type UserDetail,
 } from "@/lib/adminApi";
 
@@ -29,6 +30,7 @@ export default function UserDetailPage({
   const [loading, setLoading] = useState(true);
   const [showProvision, setShowProvision] = useState(false);
   const [deleting, setDeleting] = useState<number | null>(null);
+  const [deletingDns, setDeletingDns] = useState<number | null>(null);
 
   async function load() {
     try {
@@ -54,6 +56,19 @@ export default function UserDetailPage({
       alert(err instanceof Error ? err.message : "Deprovision failed");
     } finally {
       setDeleting(null);
+    }
+  }
+
+  async function handleDeleteDns(recordId: number) {
+    if (!confirm("Delete this DNS record? This will remove it from Cloudflare.")) return;
+    setDeletingDns(recordId);
+    try {
+      await adminDeleteDnsRecord(recordId);
+      load();
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : "Failed to delete DNS record");
+    } finally {
+      setDeletingDns(null);
     }
   }
 
@@ -217,6 +232,88 @@ export default function UserDetailPage({
                             {deleting === s.id ? "..." : "Destroy"}
                           </button>
                         )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {/* Subdomains */}
+          <h2 className="mt-8 mb-4 text-base font-semibold text-foreground">
+            Subdomains ({user.dns_records?.length || 0})
+          </h2>
+
+          {!user.dns_records || user.dns_records.length === 0 ? (
+            <p className="text-sm text-on-surface-variant">
+              No subdomains for this user.
+            </p>
+          ) : (
+            <div className="overflow-x-auto rounded-lg border border-outline-variant">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-outline-variant bg-surface">
+                    <th className="px-4 py-3 text-left font-medium text-on-surface-variant">
+                      Domain
+                    </th>
+                    <th className="px-4 py-3 text-left font-medium text-on-surface-variant">
+                      Type
+                    </th>
+                    <th className="px-4 py-3 text-left font-medium text-on-surface-variant">
+                      IP
+                    </th>
+                    <th className="px-4 py-3 text-center font-medium text-on-surface-variant">
+                      Proxied
+                    </th>
+                    <th className="px-4 py-3 text-left font-medium text-on-surface-variant">
+                      Created
+                    </th>
+                    <th className="px-4 py-3 text-right font-medium text-on-surface-variant">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {user.dns_records.map((r) => (
+                    <tr
+                      key={r.id}
+                      className="border-b border-outline-variant last:border-0"
+                    >
+                      <td className="px-4 py-3">
+                        <a
+                          href={`https://${r.domain}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-mono text-xs text-primary hover:underline"
+                        >
+                          {r.domain}
+                        </a>
+                      </td>
+                      <td className="px-4 py-3 text-on-surface-variant">
+                        {r.record_type}
+                      </td>
+                      <td className="px-4 py-3 font-mono text-xs text-on-surface-variant">
+                        {r.ip}
+                      </td>
+                      <td className="px-4 py-3 text-center">
+                        <span
+                          className={`inline-block h-2.5 w-2.5 rounded-full ${
+                            r.proxied ? "bg-green-500" : "bg-zinc-500"
+                          }`}
+                        />
+                      </td>
+                      <td className="px-4 py-3 text-on-surface-variant">
+                        {formatDate(r.created_at)}
+                      </td>
+                      <td className="px-4 py-3 text-right">
+                        <button
+                          onClick={() => handleDeleteDns(r.id)}
+                          disabled={deletingDns === r.id}
+                          className="text-red-400 transition-colors hover:text-red-300 disabled:opacity-50"
+                        >
+                          {deletingDns === r.id ? "..." : "Delete"}
+                        </button>
                       </td>
                     </tr>
                   ))}

@@ -1,10 +1,5 @@
-export function Logo({ className = "w-4 h-4" }: { className?: string }) {
+export function Logo({ className = "w-9 h-9" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 749 749" fill="none">
-      <path
-        d="M561.704 187.225V374.45H655.302L748.9 280.867V187.283H561.646L561.704 187.225ZM280.852 187.225H561.704V0H187.254L0 187.225V561.617H187.254V280.808L280.852 187.225ZM187.254 748.842H280.852L374.45 655.259V561.675H187.254V748.9V748.842ZM374.508 561.617H468.106L561.704 468.034V374.45H374.45V561.675L374.508 561.617Z"
-        fill="currentColor"
-      />
-    </svg>
+    <img src="/dovi_icon.svg" alt="DoVisual" className={className} />
   );
 }

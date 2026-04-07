@@ -6,47 +6,47 @@ import { Divider } from "@/components/Divider";
 export const metadata: Metadata = {
   title: "Security",
   description:
-    "Security architecture for the DoVisual platform. AES-256-GCM encryption, scoped agent credentials, and full audit logging.",
+    "Security architecture for DoVisual. PIN authentication, JWT tokens, encrypted connections, and device isolation.",
 };
 
 const securityFeatures = [
   {
-    label: "Card data at rest",
-    value: "AES-256-GCM",
-    desc: "PAN and CVV are encrypted with AES-256-GCM using a random initialization vector per field. Card data is never stored in plaintext. Decryption occurs only on your explicit request through the CLI, MCP, or API. Encryption keys are rotated on a regular schedule.",
+    label: "Credentials at rest",
+    value: "Hashed + encrypted",
+    desc: "PIN codes are hashed before storage. JWT secrets use 256-bit keys. Server configuration is stored with restricted file permissions (mode 0600). No plaintext credentials.",
   },
   {
     label: "Authentication",
-    value: "Magic links + API keys",
-    desc: "Authentication uses 32-byte cryptographically random tokens delivered via magic link. Tokens are single-use with a 15-minute expiry. No passwords are stored. API keys are generated with sufficient entropy and scoped to your organization.",
+    value: "PIN + JWT",
+    desc: "6-digit PIN for initial authentication. JWT tokens issued per device with configurable expiry (default 7 days). No passwords — PIN-based auth is simpler and more secure for mobile.",
   },
   {
-    label: "Session tokens",
-    value: "JWT HS256",
-    desc: "Session tokens are signed with a 256-bit secret using HMAC-SHA256. Tokens are stored locally with file permissions restricted to mode 0600 (owner read/write only). Sessions expire after 30 days and can be revoked manually.",
+    label: "Transport security",
+    value: "TLS 1.3 + WSS",
+    desc: "All API calls over HTTPS with TLS 1.3. Terminal sessions over secure WebSocket (WSS). nginx handles SSL termination with Let's Encrypt certificates.",
   },
   {
-    label: "MCP access",
-    value: "Per-request JWT",
-    desc: "Every MCP request is authenticated with your JWT. No shared credentials between users or agents. Destructive actions (card creation, payments) require human approval. Read-only actions execute without prompting.",
+    label: "AI permissions",
+    value: "Human-in-the-loop",
+    desc: "Every destructive AI action requires your explicit approval via the mobile app. Read-only operations execute instantly. You control what Claude Code can do.",
   },
   {
-    label: "Agent isolation",
-    value: "Scoped credentials",
-    desc: "Each registered agent receives its own API key with scoped permissions. One compromised agent cannot access another agent's cards, IBANs, or funds. Agent credentials can be rotated independently without affecting other agents.",
+    label: "Device isolation",
+    value: "Per-device tokens",
+    desc: "Each connected device receives its own JWT with a unique device ID. Compromised devices can be revoked independently without affecting other sessions.",
   },
   {
-    label: "Audit trail",
-    value: "Full compliance log",
-    desc: "Every action is logged with timestamp, actor (user or agent), resource affected, and context. Audit logs are immutable and retained for 7+ years. Exportable as CSV or JSON. Stream live with the audit log command.",
+    label: "Access logging",
+    value: "Full audit trail",
+    desc: "Every API request is authenticated and logged. Device tracking records last active time. Token revocation is immediate and permanent.",
   },
 ];
 
 const compliance = [
   {
-    title: "PCI DSS",
-    desc: "Card data handling follows PCI DSS requirements. Encryption at rest, tokenization in transit, and strict access controls.",
-    status: "Compliant",
+    title: "SOC 2 Type II",
+    desc: "Security, availability, and confidentiality controls independently audited. Comprehensive controls for infrastructure management platforms.",
+    status: "In progress",
   },
   {
     title: "GDPR",
@@ -54,9 +54,9 @@ const compliance = [
     status: "Compliant",
   },
   {
-    title: "SOC 2 Type II",
-    desc: "Security, availability, and confidentiality controls independently audited. Comprehensive controls for financial data handling.",
-    status: "In progress",
+    title: "ISO 27001",
+    desc: "Information security management system certification for infrastructure management platforms.",
+    status: "Planned",
   },
 ];
 
@@ -74,9 +74,9 @@ export default function SecurityPage() {
             It&apos;s the foundation.
           </h1>
           <p className="text-zinc-500 max-w-xl text-base leading-relaxed">
-            Financial data demands the highest standard of protection. Every
-            layer of DoVisual is designed with security as the default, not an
-            afterthought.
+            Infrastructure management demands the highest standard of
+            protection. Every layer of DoVisual is designed with security as the
+            default, not an afterthought.
           </p>
         </div>
       </section>
@@ -165,7 +165,7 @@ export default function SecurityPage() {
             <div className="flex flex-wrap gap-3">
               <a
                 href="mailto:security@dovisual.com"
-                className="px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:brightness-110 transition-all text-sm"
+                className="px-6 py-3 bg-primary text-black font-semibold rounded-lg hover:brightness-110 transition-all text-sm"
               >
                 security@dovisual.com
               </a>

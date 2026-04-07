@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Strategic Plan 2026",
   description:
-    "The Financial OS for Autonomous AI Commerce. Strategic Plan, March 2026.",
+    "The Mobile-First Cloud OS for Developers. Strategic Plan, March 2026.",
 };
 
 export default function DeckPage() {
@@ -25,17 +25,17 @@ export default function DeckPage() {
           <h1 className="font-black font-headline tracking-tighter leading-[0.95] text-4xl md:text-6xl lg:text-7xl mb-8 max-w-4xl">
             DoVisual:{" "}
             <span className="bg-gradient-to-br from-white/90 to-zinc-500 bg-clip-text text-transparent">
-              The Financial OS
+              The Mobile-First Cloud OS
             </span>
             <br />
-            for Autonomous
-            <br />
-            AI Commerce
+            <span className="bg-gradient-to-br from-white/90 to-zinc-500 bg-clip-text text-transparent">
+              for Developers
+            </span>
           </h1>
 
           <p className="text-lg md:text-xl text-zinc-500 max-w-2xl leading-relaxed mb-16">
-            Payment infrastructure for the agentic era. Cards, IBANs, credit
-            lines, and crypto rails for autonomous AI agents.
+            Cloud infrastructure management from your phone. Terminal,
+            containers, AI, and monitoring &mdash; one app, any VPS.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -50,35 +50,35 @@ export default function DeckPage() {
                 </span>
               </div>
               <p className="mt-4 text-xs text-zinc-600">
-                MCP-native payment rails for autonomous agents.
+                Mobile-first VPS management for developers.
               </p>
             </div>
             <div className="bg-zinc-950 border border-white/[0.08] rounded-xl p-8">
               <div className="text-[11px] font-mono text-primary mb-4 tracking-widest uppercase">
-                TAM &mdash; B2B Agent Commerce
+                TAM &mdash; Cloud Management
               </div>
               <div className="text-xl font-bold tracking-tight">
-                $15T by 2028
+                $40B by 2028
               </div>
               <p className="mt-4 text-xs text-zinc-600">
-                90% of B2B purchases will be AI-agent intermediated.
+                Cloud management and DevOps tooling market.
               </p>
               <p className="mt-1 text-[10px] text-zinc-700">
-                Source: Gartner, Oct 2025
+                Source: Gartner, 2025
               </p>
             </div>
             <div className="bg-zinc-950 border border-white/[0.08] rounded-xl p-8">
               <div className="text-[11px] font-mono text-primary mb-4 tracking-widest uppercase">
-                US Agentic Commerce
+                Mobile Developer Tools
               </div>
               <div className="text-xl font-bold tracking-tight">
-                $500B by 2030
+                $12B by 2028
               </div>
               <p className="mt-4 text-xs text-zinc-600">
-                15&ndash;25% of total US online retail sales.
+                Developer tools accessible from mobile devices.
               </p>
               <p className="mt-1 text-[10px] text-zinc-700">
-                Source: Bain &amp; Company, Dec 2025
+                Source: Markets and Markets, 2025
               </p>
             </div>
           </div>
@@ -96,18 +96,17 @@ export default function DeckPage() {
               Thesis
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1] mb-8">
-              AI agents are becoming{" "}
+              Developers deserve{" "}
               <span className="bg-gradient-to-br from-white/90 to-zinc-500 bg-clip-text text-transparent italic">
-                economic actors.
+                better mobile tools.
               </span>
             </h2>
             <p className="text-lg text-zinc-500 max-w-2xl leading-relaxed">
-              The next era of commerce isn&apos;t human-to-machine. It&apos;s
-              machine-to-machine.{" "}
+              The cloud runs 24/7 but developers are tied to their desks.{" "}
               <span className="text-white font-semibold">DoVisual</span>{" "}
-              provides the financial rail for the agentic economy, enabling
-              autonomous agents to hold capital, negotiate, and execute
-              transactions.
+              provides the mobile-first operating system for cloud
+              infrastructure, enabling developers to manage servers, deploy apps,
+              and code with AI from anywhere.
             </p>
           </div>
 
@@ -115,18 +114,17 @@ export default function DeckPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
             <div className="bg-zinc-950 border border-white/[0.08] rounded-xl p-8">
               <div className="text-[11px] font-mono text-primary mb-10 tracking-widest uppercase">
-                B2B Agent-Intermediated Purchases
+                Cloud Infrastructure Spend
               </div>
               <div className="text-5xl font-black tracking-tighter mb-3">
-                $15T
+                $600B
               </div>
               <p className="text-sm text-zinc-500 leading-relaxed">
-                By 2028, 90% of all B2B purchases will flow through AI agent
-                exchanges, pushing over $15 trillion through agent-intermediated
-                channels.
+                Annual global cloud infrastructure spending continues to grow at
+                20%+ year over year.
               </p>
               <p className="mt-3 text-[10px] text-zinc-700">
-                Source: Gartner, Oct 2025
+                Source: Synergy Research, 2025
               </p>
               <div className="mt-6 h-1 w-full bg-zinc-900 rounded-full overflow-hidden">
                 <div className="h-full bg-primary rounded-full w-[90%]" />
@@ -134,17 +132,17 @@ export default function DeckPage() {
             </div>
             <div className="bg-zinc-950 border border-white/[0.08] rounded-xl p-8">
               <div className="text-[11px] font-mono text-primary mb-10 tracking-widest uppercase">
-                US Agentic Commerce by 2030
+                Developer Population
               </div>
               <div className="text-5xl font-black tracking-tighter mb-3">
-                $500B
+                30M+
               </div>
               <p className="text-sm text-zinc-500 leading-relaxed">
-                Agentic AI could account for 15&ndash;25% of US e-commerce
-                sales by 2030, reaching $300B&ndash;$500B in annual volume.
+                Professional developers worldwide, most managing at least one
+                cloud server.
               </p>
               <p className="mt-3 text-[10px] text-zinc-700">
-                Source: Bain &amp; Company, Dec 2025
+                Source: GitHub Octoverse, 2025
               </p>
               <div className="mt-6 h-1 w-full bg-zinc-900 rounded-full overflow-hidden">
                 <div className="h-full bg-primary rounded-full w-[60%]" />
@@ -152,17 +150,17 @@ export default function DeckPage() {
             </div>
             <div className="bg-zinc-950 border border-white/[0.08] rounded-xl p-8">
               <div className="text-[11px] font-mono text-primary mb-10 tracking-widest uppercase">
-                Enterprise AI Agent Adoption
+                Mobile-First Developers
               </div>
               <div className="text-5xl font-black tracking-tighter mb-3">
-                40%
+                65%
               </div>
               <p className="text-sm text-zinc-500 leading-relaxed">
-                Of enterprise apps will feature task-specific AI agents by 2026,
-                up from less than 5% in 2025. An 8x increase in 12 months.
+                Of developers use mobile devices for work-related tasks beyond
+                email and chat.
               </p>
               <p className="mt-3 text-[10px] text-zinc-700">
-                Source: Gartner, Aug 2025
+                Source: Stack Overflow Survey, 2025
               </p>
               <div className="mt-6 h-1 w-full bg-zinc-900 rounded-full overflow-hidden">
                 <div className="h-full bg-primary rounded-full w-[40%]" />
@@ -170,23 +168,22 @@ export default function DeckPage() {
             </div>
           </div>
 
-          {/* Infrastructure Lag */}
+          {/* The Mobile Gap */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div className="bg-zinc-950 border border-white/[0.08] rounded-xl p-10">
               <h3 className="text-xl font-bold mb-4 text-primary">
-                The Infrastructure Lag
+                The Mobile Gap
               </h3>
               <p className="text-zinc-500 leading-relaxed mb-6 text-sm">
-                AI agents are ready to transact. Financial systems are not.
-                Current infrastructure requires human identity and manual
-                verification. Agents cannot open bank accounts, hold credit
-                cards, or settle payments autonomously.
+                Cloud infrastructure tools are desktop-first. Developers
+                managing production servers need access from anywhere, not just
+                their laptops.
               </p>
               <div className="flex flex-col gap-4">
                 {[
-                  ["No KYC path for agents", "Identity systems assume human principals. No framework exists for agent-level financial identity."],
-                  ["Legacy rail latency", "Traditional payment settlement takes days. Agents operate in milliseconds."],
-                  ["No trust layer", "No standard for verifying agent authorization, spending limits, or principal delegation."],
+                  ["No mobile-first SSH", "Terminal apps on mobile are afterthoughts. No integration with Docker, files, or monitoring."],
+                  ["Fragmented tools", "Managing a server requires 5+ different apps. SSH client, Docker dashboard, file manager, monitoring tool, notes app."],
+                  ["No AI assistance", "When something breaks at midnight, you're on your own. No AI to help diagnose and fix issues from your phone."],
                 ].map(([title, desc]) => (
                   <div
                     key={title}
@@ -203,7 +200,7 @@ export default function DeckPage() {
               </div>
             </div>
             <div className="flex items-end">
-              <button className="w-full bg-primary text-white py-5 px-10 font-bold rounded-xl flex items-center justify-between hover:brightness-110 transition-all text-sm">
+              <button className="w-full bg-primary text-black py-5 px-10 font-bold rounded-xl flex items-center justify-between hover:brightness-110 transition-all text-sm">
                 Read the whitepaper
                 <span className="text-xl">&rarr;</span>
               </button>
@@ -238,8 +235,8 @@ export default function DeckPage() {
                 </div>
               </div>
               <p className="mt-6 text-xs text-zinc-600 border-t border-white/[0.08] pt-4">
-                OpenClaw is the OS for personal AI. Every agent running on it
-                needs secure payment rails. That&apos;s aiPay.
+                AI-powered development environments are becoming the standard.
+                DoVisual brings AI server management to mobile.
               </p>
             </div>
 
@@ -256,8 +253,8 @@ export default function DeckPage() {
                 </div>
               </div>
               <p className="mt-6 text-xs text-zinc-600 border-t border-white/[0.08] pt-4">
-                Agents joining the workforce means agents making purchases,
-                paying invoices, and managing budgets.
+                AI agents managing infrastructure need mobile oversight.
+                DoVisual provides the human-in-the-loop interface.
               </p>
             </div>
 
@@ -274,8 +271,8 @@ export default function DeckPage() {
                 </div>
               </div>
               <p className="mt-6 text-xs text-zinc-600 border-t border-white/[0.08] pt-4">
-                Constellations of agents need constellations of cards, IBANs,
-                and spending policies. Managed from one stack.
+                Constellations of agents need monitoring from anywhere. DoVisual
+                puts your entire server fleet in your pocket.
               </p>
             </div>
           </div>
@@ -287,14 +284,13 @@ export default function DeckPage() {
                 Industry Signal
               </div>
               <p className="text-sm text-zinc-400 leading-relaxed">
-                In September 2025, <span className="text-white font-semibold">Stripe and OpenAI</span> co-developed
-                the Agentic Commerce Protocol (ACP) &mdash; an open standard
-                enabling AI agents to complete purchases. Stripe introduced a
-                Shared Payment Token letting agents initiate payments without
-                exposing buyer credentials.
+                In 2025, <span className="text-white font-semibold">Claude Code</span> became the fastest-growing
+                developer tool, with millions of developers using AI for coding
+                and infrastructure management. Mobile-first access to these AI
+                tools is the next frontier.
               </p>
               <p className="mt-2 text-[10px] text-zinc-700">
-                Source: Stripe Blog, Sep 2025
+                Source: Anthropic, 2025
               </p>
             </div>
             <div className="shrink-0 text-right">
@@ -322,14 +318,13 @@ export default function DeckPage() {
                 Platform
               </span>
               <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] mb-6">
-                Seven capabilities.
+                Six capabilities.
                 <br />
-                One unified stack.
+                One unified app.
               </h2>
               <p className="text-zinc-500 text-sm leading-relaxed">
-                DoVisual abstracts the complexity of corporate treasury into a
-                unified, programmable interface. Designed for precision, speed,
-                and infinite scalability.
+                DoVisual combines terminal, containers, files, monitoring, AI,
+                and notifications into a single mobile-first platform.
               </p>
             </div>
           </div>
@@ -338,20 +333,20 @@ export default function DeckPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               {
-                title: "Virtual Cards",
-                desc: "Instantly issue multi-currency virtual Mastercard cards (GBP, EUR, USD) with dynamic spending limits and merchant lock-in. Single-use or persistent.",
+                title: "Terminal Sessions",
+                desc: "Full PTY terminal via WebSocket. Tab completion, colors, scroll buffer. Multiple sessions with pinning. As powerful as your desktop terminal.",
               },
               {
-                title: "Spend Controls",
-                desc: "Granular, rule-based policies: per-transaction limits, daily caps, MCC restrictions, time windows. Policies stack. Most restrictive wins.",
+                title: "Docker Management",
+                desc: "List, start, stop, restart, and rebuild containers. View logs, inspect configs, manage compose projects. One-tap container lifecycle.",
               },
               {
-                title: "Virtual IBANs",
-                desc: "Each agent gets its own bank account. Receive SEPA, Faster Payments, or wire transfers. Transfer between agents instantly.",
+                title: "File Manager",
+                desc: "Browse, read, edit, upload, and delete files. Git clone repos directly. Search by name. Full filesystem access from your phone.",
               },
               {
-                title: "Credit Lines",
-                desc: "Business credit with 90-day interest-free terms. Agents create credit-backed cards. No need to pre-fund every transaction.",
+                title: "System Monitoring",
+                desc: "Real-time CPU, memory, disk, and network stats. Process list, port scanning, Docker status at a glance.",
               },
             ].map((f) => (
               <div
@@ -367,42 +362,42 @@ export default function DeckPage() {
               </div>
             ))}
 
-            {/* MCP Native (tall) */}
+            {/* AI Native (tall) */}
             <div className="bg-zinc-950 border border-white/[0.08] rounded-xl p-8 hover:border-primary/20 transition-colors lg:row-span-2 flex flex-col">
               <div className="font-mono text-sm text-primary font-semibold tracking-wider uppercase mb-4">
-                MCP Native
+                AI Native
               </div>
               <p className="text-sm text-zinc-500 leading-relaxed mb-6">
-                Built on the Model Context Protocol &mdash; now governed by the
-                Linux Foundation&apos;s Agentic AI Foundation. 25+ tools
-                registered. Every CLI command is also an MCP tool and a REST API
-                endpoint.
+                Built with Claude Code integration from day one. AI has full
+                server access &mdash; terminal, files, Docker, system stats.
+                Every destructive action requires your approval via the mobile
+                app.
               </p>
               <div className="flex-1 min-h-[120px] bg-black rounded-lg p-5 flex flex-col gap-4 border border-white/[0.08]">
                 <div className="flex justify-between items-end">
                   <div>
                     <div className="text-2xl font-black tracking-tighter">
-                      97M+
+                      30M+
                     </div>
                     <div className="text-[10px] text-zinc-600 mt-0.5">
-                      Monthly SDK downloads
+                      Claude Code users
                     </div>
                   </div>
                   <div className="text-right">
                     <div className="text-2xl font-black tracking-tighter">
-                      10K+
+                      24/7
                     </div>
                     <div className="text-[10px] text-zinc-600 mt-0.5">
-                      Active MCP servers
+                      Mobile AI access
                     </div>
                   </div>
                 </div>
                 <div className="mt-auto">
                   <div className="text-[10px] text-zinc-700 mb-2">
-                    AAIF Platinum Members
+                    Powered By
                   </div>
                   <div className="flex flex-wrap gap-1.5">
-                    {["AWS", "Anthropic", "Google", "Microsoft", "OpenAI", "Block"].map(
+                    {["Claude Code", "Anthropic API", "WebSocket", "Docker", "nginx", "Let's Encrypt"].map(
                       (name) => (
                         <span
                           key={name}
@@ -416,31 +411,31 @@ export default function DeckPage() {
                 </div>
               </div>
               <p className="mt-4 text-[10px] text-zinc-700">
-                Source: Anthropic / Linux Foundation, Dec 2025
+                Source: Anthropic, 2025
               </p>
             </div>
 
-            {/* Accounting + Crypto (wide) */}
+            {/* Push Notifications + Auto SSL (wide) */}
             <div className="bg-zinc-950 border border-white/[0.08] rounded-xl p-8 hover:border-primary/20 transition-colors lg:col-span-2">
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="flex-1">
                   <div className="font-mono text-sm text-primary font-semibold tracking-wider uppercase mb-4">
-                    Crypto On/Off Ramp
+                    Push Notifications
                   </div>
                   <p className="text-sm text-zinc-500 leading-relaxed">
-                    Fund agent cards from USDC or USDT. Real-time exchange rate
-                    shown before confirmation. Settle agent-to-agent payments
-                    on-chain.
+                    Expo push notification support. Get alerts when deployments
+                    finish, containers crash, or AI tasks complete. Never miss a
+                    critical event.
                   </p>
                 </div>
                 <div className="flex-1">
                   <div className="font-mono text-sm text-primary font-semibold tracking-wider uppercase mb-4">
-                    Accounting Integrations
+                    Auto SSL &amp; DNS
                   </div>
                   <p className="text-sm text-zinc-500 leading-relaxed">
-                    Bi-directional sync with NetSuite, SAP, QuickBooks, and Xero
-                    for zero-touch reconciliation. Full audit trail exportable as
-                    CSV or JSON.
+                    Cloudflare DNS integration for automatic subdomain creation.
+                    Let&apos;s Encrypt certificates provisioned and renewed
+                    automatically.
                   </p>
                 </div>
               </div>
@@ -478,37 +473,37 @@ export default function DeckPage() {
               {
                 time: "Months 1\u20133",
                 phase: "Phase 01 \u2014 Foundation",
-                title: "Core Infrastructure",
+                title: "Foundation",
                 color: "border-t-primary",
                 items: [
-                  "Virtual card issuance (GBP, EUR, USD)",
-                  "MCP server with 25+ tools",
-                  "CLI + REST API launch",
-                  "KYA agent registry",
+                  "One-command server setup (dovi install)",
+                  "PTY terminal via WebSocket",
+                  "Docker container management",
+                  "PIN-based mobile authentication",
                 ],
               },
               {
                 time: "Months 4\u20136",
-                phase: "Phase 02 \u2014 Credit & IBANs",
-                title: "Financial Products",
+                phase: "Phase 02 \u2014 Intelligence",
+                title: "Intelligence",
                 color: "border-t-blue-400",
                 items: [
-                  "Virtual IBAN provisioning",
-                  "Credit line underwriting engine",
-                  "Programmable policy engine",
-                  "Governance dashboard",
+                  "Claude Code AI integration",
+                  "File manager with git clone",
+                  "Push notification system",
+                  "Multi-device support",
                 ],
               },
               {
                 time: "Months 7\u201312",
                 phase: "Phase 03 \u2014 Scale",
-                title: "Global Expansion",
+                title: "Scale",
                 color: "border-t-yellow-400",
                 items: [
-                  "Crypto on/off ramp (USDC, USDT)",
-                  "Accounting integrations (NetSuite, SAP, Xero)",
-                  "Agent-to-agent payment mesh",
-                  "Enterprise SDK v2.0",
+                  "Team management and shared access",
+                  "VM auto-provisioning via Proxmox",
+                  "Custom app registry dashboard",
+                  "Enterprise API access",
                 ],
               },
             ].map((p) => (
@@ -539,32 +534,32 @@ export default function DeckPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               {
-                label: "MCP SDK Downloads",
-                value: "97M+",
-                sub: "monthly",
-                bar: "w-[90%]",
-                source: "Linux Foundation",
+                label: "Cloud DevOps Market",
+                value: "$40B",
+                sub: "by 2028",
+                bar: "w-[80%]",
+                source: "Gartner",
               },
               {
-                label: "Active MCP Servers",
-                value: "10K+",
-                sub: "public",
+                label: "Developer Population",
+                value: "30M+",
+                sub: "worldwide",
                 bar: "w-[70%]",
-                source: "Anthropic",
+                source: "GitHub",
               },
               {
-                label: "Virtual Card Market",
-                value: "$60B",
-                sub: "by 2030",
+                label: "Mobile Work Tasks",
+                value: "65%",
+                sub: "of devs",
                 bar: "w-[55%]",
-                source: "Grand View Research",
+                source: "Stack Overflow",
               },
               {
-                label: "Agents Per Employee",
-                value: "100:1",
-                sub: "Nvidia vision",
-                bar: "w-[45%]",
-                source: "Jensen Huang, GTC 2026",
+                label: "AI Dev Tool Growth",
+                value: "10x",
+                sub: "YoY adoption",
+                bar: "w-[90%]",
+                source: "Anthropic",
               },
             ].map((m) => (
               <div

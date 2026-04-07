@@ -4,47 +4,47 @@ import { useState, useEffect, useCallback } from "react";
 import { Terminal } from "./Terminal";
 import { FloatingCard } from "./FloatingCard";
 
-const COMMAND = "dovi cards create --amount 200 --currency eur";
+const COMMAND = "dovi install --domain myapp.dovisual.com";
 
 const OUTPUT_LINES = [
   { type: "blank" },
-  { type: "success", text: "\u00A0 Virtual card issued!" },
+  { type: "success", text: "\u00A0 Server configured!" },
   { type: "blank" },
   {
     type: "row",
-    label: "\u00A0 Card",
-    value: "\u00A0 \u2022\u2022\u2022\u2022 8391",
+    label: "\u00A0 Domain",
+    value: "\u00A0 myapp.dovisual.com",
     valueColor: "text-zinc-400",
   },
   {
     type: "row",
-    label: "\u00A0 Expires",
-    value: "\u00A0 09/27",
-    valueColor: "text-zinc-400",
-  },
-  {
-    type: "row",
-    label: "\u00A0 Balance",
-    value: "\u00A0 EUR 200.00",
+    label: "\u00A0 SSL",
+    value: "\u00A0 Let's Encrypt issued",
     valueColor: "text-primary",
   },
   {
     type: "row",
-    label: "\u00A0 Agent",
-    value: "\u00A0 procurement-bot",
+    label: "\u00A0 API",
+    value: "\u00A0 https://myapp.dovisual.com/api",
     valueColor: "text-zinc-400",
   },
   {
     type: "row",
-    label: "\u00A0 ID",
-    value: "\u00A0 card_eur_3kf9a...",
+    label: "\u00A0 PIN",
+    value: "\u00A0 483921",
     valueColor: "text-zinc-400",
+  },
+  {
+    type: "row",
+    label: "\u00A0 Status",
+    value: "\u00A0 running",
+    valueColor: "text-primary",
   },
 ] as const;
 
 function colorizeCommand(text: string) {
   const parts: { text: string; color: string }[] = [];
-  const regex = /(--\w+)|(\b\d+\b)|(\b(?:eur|usd|gbp)\b)/gi;
+  const regex = /(--\w+)/gi;
   let lastIndex = 0;
   let match;
 
@@ -54,10 +54,6 @@ function colorizeCommand(text: string) {
     }
     if (match[1]) {
       parts.push({ text: match[1], color: "text-yellow-400" });
-    } else if (match[2]) {
-      parts.push({ text: match[2], color: "text-blue-400" });
-    } else if (match[3]) {
-      parts.push({ text: match[3], color: "text-blue-400" });
     }
     lastIndex = regex.lastIndex;
   }

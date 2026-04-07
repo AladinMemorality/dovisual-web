@@ -11,15 +11,15 @@ export function FloatingCard() {
         <div className="flex items-center gap-2">
           <Logo className="w-4 h-4 text-primary" />
           <span className="text-[11px] font-semibold tracking-wide text-white/80">
-            aiPay
+            DoVisual
           </span>
         </div>
         <span className="text-[9px] font-mono tracking-[0.15em] text-primary/70 uppercase px-2 py-0.5 rounded bg-primary/10 border border-primary/20">
-          Virtual
+          Online
         </span>
       </div>
 
-      {/* NFC icon */}
+      {/* Server icon */}
       <div className="relative z-10">
         <svg
           width="24"
@@ -28,31 +28,16 @@ export function FloatingCard() {
           fill="none"
           className="text-white/30"
         >
-          <path
-            d="M6.5 13.5a5 5 0 017-7"
-            stroke="currentColor"
-            strokeWidth={1.2}
-            strokeLinecap="round"
-          />
-          <path
-            d="M4 16a9 9 0 0112.7-12.7"
-            stroke="currentColor"
-            strokeWidth={1.2}
-            strokeLinecap="round"
-          />
-          <path
-            d="M9 11a1.5 1.5 0 012.1-2.1"
-            stroke="currentColor"
-            strokeWidth={1.2}
-            strokeLinecap="round"
-          />
+          <rect x="2" y="3" width="20" height="7" rx="1.5" stroke="currentColor" strokeWidth={1.2} />
+          <rect x="2" y="14" width="20" height="7" rx="1.5" stroke="currentColor" strokeWidth={1.2} />
+          <circle cx="6" cy="6.5" r="1" fill="currentColor" />
+          <circle cx="6" cy="17.5" r="1" fill="currentColor" />
         </svg>
       </div>
 
-      {/* Card number */}
-      <div className="font-mono text-[15px] tracking-[0.2em] text-white/80 relative z-10">
-        &#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226;
-        &#8226;&#8226;&#8226;&#8226; 4242
+      {/* Server name */}
+      <div className="font-mono text-[15px] tracking-[0.05em] text-white/80 relative z-10">
+        myapp.dovisual.com
       </div>
 
       {/* Bottom row */}
@@ -60,26 +45,22 @@ export function FloatingCard() {
         <div className="flex gap-8">
           <div>
             <div className="text-[8px] font-mono uppercase tracking-[0.15em] text-white/30 mb-0.5">
-              Valid Thru
+              Containers
             </div>
-            <div className="text-[11px] font-mono text-white/70">09/27</div>
+            <div className="text-[11px] font-mono text-white/70">3 running</div>
           </div>
           <div>
             <div className="text-[8px] font-mono uppercase tracking-[0.15em] text-white/30 mb-0.5">
-              Cardholder
+              CPU / Mem
             </div>
-            <div className="text-[11px] font-mono text-white/70">AI AGENT</div>
+            <div className="text-[11px] font-mono text-white/70">12% / 41%</div>
           </div>
         </div>
-        {/* Mastercard logo */}
-        <svg width="40" height="24" viewBox="0 0 40 24" className="flex-shrink-0">
-          <circle cx="14" cy="12" r="10" fill="#EB001B" opacity="0.9" />
-          <circle cx="26" cy="12" r="10" fill="#F79E1B" opacity="0.9" />
-          <path
-            d="M20 4.4a10 10 0 010 15.2 10 10 0 000-15.2z"
-            fill="#FF5F00"
-          />
-        </svg>
+        {/* Uptime indicator */}
+        <div className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <span className="text-[10px] font-mono text-primary/70">99.9%</span>
+        </div>
       </div>
     </div>
   );

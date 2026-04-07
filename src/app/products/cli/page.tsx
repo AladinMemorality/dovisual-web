@@ -6,80 +6,64 @@ import { Terminal } from "@/components/Terminal";
 import { GetStartedButton } from "@/components/InstallModal";
 
 export const metadata: Metadata = {
-  title: "CLI & MCP",
+  title: "CLI & Server Setup",
   description:
-    "Command-line interface and Model Context Protocol integration for AI agent payments. 8 resource groups, 25+ MCP tools.",
+    "Command-line tool for setting up and managing DoVisual on your VPS. One command installs everything.",
 };
 
 const commands = [
   {
-    name: "dovi agents register",
-    desc: "Register an AI agent with KYA identity. Returns scoped credentials. Required before any financial activity.",
-    flags: ["--name", "--framework", "--purpose"],
+    name: "dovi install",
+    desc: "Set up DoVisual on your VPS. Configures systemd, nginx, SSL, and the API server. Production-ready in 90 seconds.",
+    flags: ["--domain", "--port", "--ssl"],
   },
   {
-    name: "dovi cards create",
-    desc: "Issue a virtual Mastercard. Single-use or persistent. Multi-currency. Funded from balance, credit, or stablecoins.",
-    flags: ["--amount", "--currency", "--agent", "--single-use"],
+    name: "dovi config set",
+    desc: "Update server configuration values. Set your domain, port, SSL mode, or any other runtime option.",
+    flags: ["--key", "--value"],
   },
   {
-    name: "dovi ibans create",
-    desc: "Provision a virtual IBAN for an agent. Receive SEPA, Faster Payments, or wire transfers directly.",
-    flags: ["--currency", "--agent", "--label"],
+    name: "dovi start",
+    desc: "Start the DoVisual API server. Launches the systemd service and begins accepting connections.",
+    flags: ["--foreground"],
   },
   {
-    name: "dovi credit allocate",
-    desc: "Distribute your business credit line to an agent. The agent creates credit-backed cards up to the allocated amount.",
-    flags: ["--agent", "--amount", "--currency"],
+    name: "dovi status",
+    desc: "Check the current state of the DoVisual service. Shows uptime, port, domain, and connection status.",
+    flags: ["--json"],
   },
   {
-    name: "dovi crypto fund",
-    desc: "Convert USDC or USDT to fiat and deposit into a card or IBAN. Real-time exchange rate shown before confirmation.",
-    flags: ["--to", "--amount", "--token"],
+    name: "dovi pin",
+    desc: "Display or generate your authentication PIN. Used to pair the mobile app and obtain JWT tokens.",
+    flags: ["--reset"],
   },
   {
-    name: "dovi policies create",
-    desc: "Define a programmable spending policy: per-txn limits, daily caps, merchant restrictions, approval thresholds.",
-    flags: ["--max-txn", "--daily-limit", "--allowed-mcc"],
+    name: "dovi update",
+    desc: "Update DoVisual to the latest version. Downloads the newest release and restarts the service automatically.",
+    flags: ["--force"],
   },
   {
-    name: "dovi invoices pay",
-    desc: "Trigger payment for a verified invoice. Supports multi-currency and extended 90-day interest-free terms.",
-    flags: ["--source", "--agent"],
+    name: "dovi restart",
+    desc: "Restart the DoVisual API server. Applies any pending configuration changes and refreshes the service.",
+    flags: ["--graceful"],
   },
   {
-    name: "dovi audit log --follow",
-    desc: "Stream the live audit log. Every transaction, card creation, policy change, and anomaly alert in real time.",
-    flags: ["--agent", "--since", "--type"],
+    name: "dovi config",
+    desc: "View the current server configuration. Shows domain, port, SSL status, and all active settings.",
+    flags: ["--json"],
   },
 ];
 
-const mcpTools = [
-  ["create_card", "Issue a virtual card for an agent"],
-  ["create_iban", "Provision a virtual IBAN"],
-  ["get_card_details", "Retrieve PAN, CVV, expiry on demand"],
-  ["check_balance", "Query card or IBAN balance"],
-  ["freeze_card", "Instant freeze / unfreeze a card"],
-  ["transfer_funds", "Move funds between IBANs"],
-  ["credit_status", "View credit line details"],
-  ["allocate_credit", "Assign credit to an agent"],
-  ["fund_from_crypto", "Convert stablecoin to fiat"],
-  ["pay_invoice", "Trigger supplier payment"],
-  ["list_transactions", "View transaction history"],
-  ["register_agent", "Register a new AI agent (KYA)"],
-  ["list_agents", "List all registered agents"],
-  ["get_agent", "Get details of a specific agent"],
-  ["create_policy", "Create a spending policy"],
-  ["list_policies", "List all active policies"],
-  ["delete_policy", "Remove a spending policy"],
-  ["list_cards", "List all active cards"],
-  ["cancel_card", "Cancel a virtual card"],
-  ["list_ibans", "List all virtual IBANs"],
-  ["get_iban", "Get IBAN details and balance"],
-  ["list_invoices", "List pending invoices"],
-  ["get_audit_log", "Retrieve audit log entries"],
-  ["crypto_rates", "Get real-time exchange rates"],
-  ["crypto_deposit_address", "Get deposit address for funding"],
+const apiEndpoints = [
+  ["/api/auth/*", "PIN auth, JWT tokens, device management"],
+  ["/api/stats", "CPU, memory, disk, network, Docker, processes"],
+  ["/api/files/*", "List, read, search, mkdir, upload, delete, git-clone"],
+  ["/api/docker/containers", "List, start, stop, restart, rebuild, logs"],
+  ["/api/sessions", "Terminal sessions (CRUD + WebSocket)"],
+  ["/api/ai/*", "Claude Code sessions, setup, OAuth"],
+  ["/api/sites", "Nginx site discovery"],
+  ["/api/apps", "App manifest management"],
+  ["/api/notify/*", "Push notification registration"],
 ];
 
 export default function CliPage() {
@@ -89,16 +73,15 @@ export default function CliPage() {
       <section className="max-w-[1120px] mx-auto px-8 pt-32 pb-20 relative overflow-hidden">
         <div className="absolute w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.04)_0%,transparent_65%)] -top-[200px] left-1/2 -translate-x-1/2 pointer-events-none" />
         <div className="relative z-10">
-          <SectionLabel>CLI &amp; MCP</SectionLabel>
+          <SectionLabel>CLI &amp; Server Setup</SectionLabel>
           <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-tight mb-4">
-            One interface for
+            One command to
             <br />
-            humans and agents.
+            set up your server.
           </h1>
           <p className="text-zinc-500 max-w-xl text-base leading-relaxed">
-            Every CLI command is also an MCP tool and a REST API endpoint. The
-            CLI is your interface. The MCP server is the agent&apos;s interface.
-            Same backend.
+            The Dovi CLI configures systemd, nginx, SSL, and the API on any
+            Ubuntu VPS. Your server is production-ready in 90 seconds.
           </p>
         </div>
       </section>
@@ -116,8 +99,8 @@ export default function CliPage() {
               in three commands
             </h3>
             <p className="text-zinc-500 text-sm">
-              Install the CLI, authenticate, connect to your AI agent.
-              Everything after that is handled by your agent.
+              Install the CLI, run the installer, check the status.
+              Your server is ready.
             </p>
           </div>
           <Terminal label="terminal">
@@ -128,29 +111,29 @@ export default function CliPage() {
               </div>
               <div>
                 <span className="text-primary">$ </span>
-                <span className="text-zinc-300">dovi auth</span>
+                <span className="text-zinc-300">dovi install</span>
               </div>
               <div>
                 <span className="text-zinc-500">
-                  &nbsp; Enter your email{" "}
+                  &nbsp; Configuring systemd{" "}
                 </span>
                 <span className="text-blue-400">&rarr;</span>
-                <span className="text-zinc-500"> click the magic link </span>
+                <span className="text-zinc-500"> setting up nginx </span>
                 <span className="text-blue-400">&rarr;</span>
-                <span className="text-primary"> authenticated</span>
+                <span className="text-primary"> SSL provisioned</span>
               </div>
               <div>
                 <span className="text-primary">$ </span>
-                <span className="text-zinc-300">dovi setup-mcp</span>
+                <span className="text-zinc-300">dovi status</span>
               </div>
               <div className="text-primary">
-                &nbsp; &#10003; MCP config written
+                &nbsp; &#10003; DoVisual running on port 3000
               </div>
               <div className="text-primary">
-                &nbsp; &#10003; 35 tools registered
+                &nbsp; &#10003; Nginx configured with SSL
               </div>
               <div className="text-primary">
-                &nbsp; &#10003; Ready to connect to Claude
+                &nbsp; &#10003; API ready at https://your-domain.com
               </div>
             </div>
           </Terminal>
@@ -163,13 +146,13 @@ export default function CliPage() {
       <section className="max-w-[1120px] mx-auto px-8 py-28">
         <SectionLabel>CLI Commands</SectionLabel>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-3">
-          Eight resource groups.
+          Eight essential commands.
           <br />
-          One unified interface.
+          Complete server control.
         </h2>
         <p className="text-zinc-500 max-w-xl mb-12 text-sm">
-          Manage agents, cards, IBANs, credit, crypto, policies, invoices, and
-          audit logs from a single CLI.
+          Install, configure, start, stop, restart, monitor, update, and
+          authenticate your DoVisual server from a single CLI.
         </p>
 
         <div className="grid sm:grid-cols-2 gap-4">
@@ -201,25 +184,25 @@ export default function CliPage() {
 
       <Divider />
 
-      {/* MCP Tools */}
+      {/* REST API */}
       <section className="max-w-[1120px] mx-auto px-8 py-28">
         <div className="bg-zinc-950 border border-white/[0.08] rounded-2xl p-10 grid lg:grid-cols-[1fr_1.2fr] gap-10 items-start">
           <div className="space-y-3">
-            <SectionLabel>MCP Integration</SectionLabel>
+            <SectionLabel>REST API</SectionLabel>
             <h3 className="text-2xl font-bold tracking-tight leading-tight">
-              35 tools for Claude.
+              Full programmatic access.
               <br />
-              Zero configuration.
+              Every capability exposed.
             </h3>
             <p className="text-zinc-500 text-sm leading-relaxed">
-              Run <span className="font-mono text-primary">dovi setup-mcp</span>{" "}
-              and Claude gets direct access to every capability. Destructive
-              actions require your approval. Read-only actions execute instantly.
+              Every feature in DoVisual is backed by a REST endpoint.
+              Authenticate with a JWT token and control your server
+              programmatically from any language or tool.
             </p>
           </div>
-          <Terminal label="registered MCP tools">
+          <Terminal label="API endpoints">
             <div className="space-y-0">
-              {mcpTools.map(([name, desc]) => (
+              {apiEndpoints.map(([name, desc]) => (
                 <div key={name} className="flex">
                   <span className="text-primary inline-block min-w-[26ch]">
                     &nbsp; {name}
@@ -239,12 +222,12 @@ export default function CliPage() {
         <div className="relative bg-zinc-950 border border-white/[0.08] rounded-[20px] p-16 text-center overflow-hidden">
           <div className="absolute w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.06)_0%,transparent_65%)] -top-[200px] left-1/2 -translate-x-1/2 pointer-events-none" />
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight relative z-10">
-            Install the CLI. Connect your agent.
+            Install the CLI. Set up your server.
           </h2>
           <p className="text-zinc-500 mt-4 mb-8 max-w-md mx-auto text-sm relative z-10">
-            Three commands. No credit card required.
+            Three commands. Production-ready in 90 seconds.
           </p>
-          <GetStartedButton className="px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:brightness-110 transition-all text-sm relative z-10">
+          <GetStartedButton className="px-6 py-3 bg-primary text-black font-semibold rounded-lg hover:brightness-110 transition-all text-sm relative z-10">
             Get started free
           </GetStartedButton>
         </div>

@@ -6,18 +6,18 @@ import { Divider } from "@/components/Divider";
 export const metadata: Metadata = {
   title: "System Status",
   description:
-    "Real-time system status for the DoVisual platform. API, MCP server, card issuance, and payment processing.",
+    "Real-time system status for the DoVisual platform. API, terminal sessions, Docker management, and AI integration.",
 };
 
 const services = [
   { name: "API Gateway", status: "Operational", uptime: "99.998%" },
-  { name: "MCP Server", status: "Operational", uptime: "99.99%" },
-  { name: "Card Issuance", status: "Operational", uptime: "99.99%" },
-  { name: "Payment Processing", status: "Operational", uptime: "99.98%" },
-  { name: "IBAN Services", status: "Operational", uptime: "99.99%" },
-  { name: "Crypto Bridge", status: "Operational", uptime: "99.95%" },
+  { name: "Terminal Sessions", status: "Operational", uptime: "99.99%" },
+  { name: "Docker Management", status: "Operational", uptime: "99.99%" },
+  { name: "File Manager", status: "Operational", uptime: "99.98%" },
+  { name: "AI Integration", status: "Operational", uptime: "99.95%" },
+  { name: "Push Notifications", status: "Operational", uptime: "99.99%" },
   { name: "Authentication", status: "Operational", uptime: "99.999%" },
-  { name: "Dashboard", status: "Operational", uptime: "99.98%" },
+  { name: "VM Provisioning", status: "Operational", uptime: "99.98%" },
 ];
 
 export default function StatusPage() {

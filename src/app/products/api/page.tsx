@@ -7,54 +7,54 @@ import { Terminal } from "@/components/Terminal";
 export const metadata: Metadata = {
   title: "REST API",
   description:
-    "RESTful API for programmatic access to cards, IBANs, credit, payments, and agent management.",
+    "REST API for programmatic access to terminals, containers, files, AI sessions, and system monitoring.",
 };
 
 const endpoints = [
   {
-    group: "/agents",
+    group: "/api/auth/*",
     methods: "POST GET",
-    desc: "Register agents, list agents, retrieve agent details and credentials.",
+    desc: "PIN-based authentication, JWT token generation, device registration, and session management.",
   },
   {
-    group: "/cards",
-    methods: "POST GET DELETE",
-    desc: "Issue virtual cards, retrieve PAN/CVV, freeze, cancel, and list transactions.",
-  },
-  {
-    group: "/ibans",
-    methods: "POST GET",
-    desc: "Provision virtual IBANs, check balances, transfer funds between accounts.",
-  },
-  {
-    group: "/credit",
-    methods: "POST GET",
-    desc: "View credit line status, allocate credit to agents, check repayment schedule.",
-  },
-  {
-    group: "/policies",
-    methods: "POST GET DELETE",
-    desc: "Create spending policies, list active rules, remove policies by ID.",
-  },
-  {
-    group: "/invoices",
-    methods: "POST GET",
-    desc: "List pending invoices, trigger payment, track settlement status.",
-  },
-  {
-    group: "/crypto",
-    methods: "POST GET",
-    desc: "Get exchange rates, fund cards from USDC/USDT, retrieve deposit addresses.",
-  },
-  {
-    group: "/audit",
+    group: "/api/stats",
     methods: "GET",
-    desc: "Query audit log with filters for agent, type, date range. Export as CSV or JSON.",
+    desc: "Real-time system monitoring: CPU, memory, disk, network usage, Docker containers, and top processes.",
   },
   {
-    group: "/auth",
+    group: "/api/files/*",
+    methods: "GET POST PUT DELETE",
+    desc: "List directories, read files, search content, create folders, upload files, delete entries, and git-clone repositories.",
+  },
+  {
+    group: "/api/docker/containers",
+    methods: "GET POST",
+    desc: "List containers, start, stop, restart, rebuild, and stream container logs in real time.",
+  },
+  {
+    group: "/api/sessions",
+    methods: "GET POST PUT DELETE",
+    desc: "Create, list, update, and delete terminal sessions. WebSocket support for live terminal streaming.",
+  },
+  {
+    group: "/api/ai/*",
+    methods: "GET POST",
+    desc: "Manage Claude Code AI sessions, run setup, handle OAuth authentication for AI integrations.",
+  },
+  {
+    group: "/api/sites",
+    methods: "GET",
+    desc: "Discover nginx-configured sites on your server. Returns domains, SSL status, and proxy targets.",
+  },
+  {
+    group: "/api/apps",
+    methods: "GET POST PUT DELETE",
+    desc: "Register and manage deployed applications. Custom labels, badges, and quick-access links for the dashboard.",
+  },
+  {
+    group: "/api/notify/*",
     methods: "POST GET",
-    desc: "Send magic links, verify tokens, check session status, and validate API keys.",
+    desc: "Register Expo push tokens, manage notification preferences, and trigger push alerts to connected devices.",
   },
 ];
 
@@ -72,9 +72,9 @@ export default function ApiPage() {
             to every capability.
           </h1>
           <p className="text-zinc-500 max-w-xl text-base leading-relaxed">
-            Every CLI command maps to a REST endpoint. Authenticate with API
-            keys, manage agents, cards, IBANs, credit, and payments
-            programmatically. Available on the Pro plan.
+            Every feature is a REST endpoint. Authenticate with JWT tokens,
+            manage terminals, containers, files, and AI sessions
+            programmatically.
           </p>
         </div>
       </section>
@@ -85,41 +85,39 @@ export default function ApiPage() {
       <section className="max-w-[1120px] mx-auto px-8 py-28">
         <SectionLabel>Authentication</SectionLabel>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-12">
-          API key authentication.
+          PIN-based authentication.
         </h2>
 
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-zinc-950 border border-white/[0.08] rounded-xl p-8">
             <div className="font-mono text-sm text-primary font-semibold mb-3">
-              Bearer Token
+              Get Your PIN
             </div>
             <p className="text-sm text-zinc-500 leading-relaxed mb-4">
-              Login via the CLI, then use{" "}
-              <span className="font-mono text-zinc-300">dovi auth token</span>{" "}
-              to get your bearer token. Include it in the Authorization header
-              for all API requests.
+              Run{" "}
+              <span className="font-mono text-zinc-300">dovi pin</span>{" "}
+              on your server to display your authentication PIN. Use this PIN
+              to authenticate from the mobile app or any API client.
             </p>
             <div className="font-mono text-[13px] bg-black rounded-lg p-4 border border-white/[0.08] text-zinc-400 space-y-0.5">
               <div>
-                <span className="text-primary">$ </span>dovi auth
+                <span className="text-primary">$ </span>dovi pin
               </div>
-              <div>
-                <span className="text-primary">$ </span>dovi auth token
-              </div>
-              <div className="text-zinc-600">eyJhbG...</div>
+              <div className="text-zinc-600">PIN: 847291</div>
             </div>
           </div>
           <div className="bg-zinc-950 border border-white/[0.08] rounded-xl p-8">
             <div className="font-mono text-sm text-primary font-semibold mb-3">
-              Per-Agent Scoping
+              JWT Bearer Token
             </div>
             <p className="text-sm text-zinc-500 leading-relaxed mb-4">
-              Optionally scope API calls to a specific agent by including the
-              agent ID in the header. This ensures agent-level isolation and
-              audit trail attribution.
+              POST the PIN to{" "}
+              <span className="font-mono text-zinc-300">/api/auth/callback</span>{" "}
+              to receive a JWT bearer token. Include this token in the
+              Authorization header for all subsequent API requests.
             </p>
             <div className="font-mono text-[13px] bg-black rounded-lg p-4 border border-white/[0.08] text-zinc-400">
-              X-Agent-Id: agent_procurement_bot
+              Authorization: Bearer eyJhbG...
             </div>
           </div>
         </div>
@@ -131,12 +129,12 @@ export default function ApiPage() {
       <section className="max-w-[1120px] mx-auto px-8 py-28">
         <SectionLabel>Endpoints</SectionLabel>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-3">
-          Nine resource groups.
+          Nine endpoint groups.
         </h2>
         <p className="text-zinc-500 max-w-xl mb-12 text-sm">
           Base URL:{" "}
           <span className="font-mono text-primary">
-            https://api.dovisual.com/v1
+            {"https://<your-domain>/api"}
           </span>
         </p>
 
@@ -175,24 +173,24 @@ export default function ApiPage() {
           <div className="space-y-3">
             <SectionLabel>Example</SectionLabel>
             <h3 className="text-2xl font-bold tracking-tight leading-tight">
-              Create a card
+              Get system stats
               <br />
               in one request.
             </h3>
             <p className="text-zinc-500 text-sm">
-              POST to /v1/cards with amount, currency, and agent ID. Get back a
-              full card object with PAN, CVV, and expiry.
+              GET /api/stats with your JWT token. Returns real-time CPU, memory,
+              disk, network, and Docker container stats in a single response.
             </p>
           </div>
           <Terminal label="curl">
             <div className="space-y-0">
               <div>
                 <span className="text-primary">$ </span>
-                <span className="text-zinc-300">curl -X POST \</span>
+                <span className="text-zinc-300">curl -X GET \</span>
               </div>
               <div>
                 <span className="text-zinc-300">
-                  &nbsp; https://api.dovisual.com/v1/cards \
+                  &nbsp; {"https://<your-domain>/api/stats"} \
                 </span>
               </div>
               <div>
@@ -202,17 +200,6 @@ export default function ApiPage() {
                 <span className="text-yellow-400">
                   &quot;Authorization: Bearer eyJhbG...&quot;
                 </span>
-                <span className="text-zinc-300"> \</span>
-              </div>
-              <div>
-                <span className="text-zinc-300">
-                  &nbsp; -d{" "}
-                </span>
-                <span className="text-blue-400">
-                  {
-                    '\'{"amount":200,"currency":"eur","agent":"procurement-bot"}\''
-                  }
-                </span>
               </div>
               <div>&nbsp;</div>
               <div className="text-zinc-600">
@@ -220,31 +207,37 @@ export default function ApiPage() {
               </div>
               <div className="text-zinc-400">
                 {"{"}&nbsp;
-                <span className="text-primary">&quot;id&quot;</span>:{" "}
-                <span className="text-blue-400">
-                  &quot;card_eur_3kf9a&quot;
-                </span>
+                <span className="text-primary">&quot;cpu&quot;</span>:{" "}
+                <span className="text-blue-400">12.4</span>
                 ,
               </div>
               <div className="text-zinc-400">
                 &nbsp;&nbsp;
-                <span className="text-primary">&quot;last4&quot;</span>:{" "}
-                <span className="text-blue-400">&quot;8391&quot;</span>,
+                <span className="text-primary">&quot;memory&quot;</span>:{" "}
+                <span className="text-blue-400">
+                  {"{ \"used\": 1842, \"total\": 4096 }"}
+                </span>,
               </div>
               <div className="text-zinc-400">
                 &nbsp;&nbsp;
-                <span className="text-primary">&quot;balance&quot;</span>:{" "}
-                <span className="text-blue-400">200.00</span>,
+                <span className="text-primary">&quot;disk&quot;</span>:{" "}
+                <span className="text-blue-400">
+                  {"{ \"used\": 24.1, \"total\": 80.0 }"}
+                </span>,
               </div>
               <div className="text-zinc-400">
                 &nbsp;&nbsp;
-                <span className="text-primary">&quot;currency&quot;</span>:{" "}
-                <span className="text-blue-400">&quot;eur&quot;</span>,
+                <span className="text-primary">&quot;docker&quot;</span>:{" "}
+                <span className="text-blue-400">
+                  {"{ \"running\": 5, \"stopped\": 2 }"}
+                </span>,
               </div>
               <div className="text-zinc-400">
                 &nbsp;&nbsp;
-                <span className="text-primary">&quot;status&quot;</span>:{" "}
-                <span className="text-blue-400">&quot;active&quot;</span>
+                <span className="text-primary">&quot;network&quot;</span>:{" "}
+                <span className="text-blue-400">
+                  {"{ \"rx\": 142, \"tx\": 87 }"}
+                </span>
                 {" }"}
               </div>
             </div>
@@ -256,46 +249,46 @@ export default function ApiPage() {
 
       {/* Rate Limits */}
       <section className="max-w-[1120px] mx-auto px-8 py-28">
-        <SectionLabel>Rate Limits &amp; Versioning</SectionLabel>
+        <SectionLabel>Rate Limits &amp; Format</SectionLabel>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-12">
-          Built for scale.
+          Built for reliability.
         </h2>
 
         <div className="grid sm:grid-cols-3 gap-4">
           <div className="bg-zinc-950 border border-white/[0.08] rounded-xl p-6">
             <div className="text-[11px] text-zinc-600 uppercase tracking-wider mb-1">
-              Rate limit
+              Authentication
             </div>
             <div className="font-mono text-sm text-primary font-semibold mb-1.5">
-              1,000 req/min
+              JWT Bearer Token
             </div>
             <p className="text-xs text-zinc-500 leading-relaxed">
-              Per API key. Burst up to 100 concurrent requests. Higher limits
-              available on Enterprise.
+              PIN-based auth returns a JWT token. Include it in the
+              Authorization header. Tokens are scoped per device.
             </p>
           </div>
           <div className="bg-zinc-950 border border-white/[0.08] rounded-xl p-6">
             <div className="text-[11px] text-zinc-600 uppercase tracking-wider mb-1">
-              API version
+              Response format
             </div>
             <div className="font-mono text-sm text-primary font-semibold mb-1.5">
-              v1 (stable)
+              JSON
             </div>
             <p className="text-xs text-zinc-500 leading-relaxed">
-              Versioned via URL path. Breaking changes ship in new versions.
-              Old versions supported for 12 months.
+              All endpoints return JSON. Terminal sessions use WebSocket for
+              real-time streaming. File uploads accept multipart/form-data.
             </p>
           </div>
           <div className="bg-zinc-950 border border-white/[0.08] rounded-xl p-6">
             <div className="text-[11px] text-zinc-600 uppercase tracking-wider mb-1">
-              Pagination
+              Transport
             </div>
             <div className="font-mono text-sm text-primary font-semibold mb-1.5">
-              Cursor-based
+              HTTPS + WSS
             </div>
             <p className="text-xs text-zinc-500 leading-relaxed">
-              All list endpoints support cursor pagination. Default page size:
-              50. Max: 200.
+              All traffic encrypted via SSL. REST over HTTPS for commands.
+              WebSocket over WSS for terminal sessions.
             </p>
           </div>
         </div>
@@ -311,7 +304,7 @@ export default function ApiPage() {
             Start building with the API.
           </h2>
           <p className="text-zinc-500 mt-4 mb-8 max-w-md mx-auto text-sm relative z-10">
-            Full REST API access included with the Pro plan.
+            Full REST API access included with every DoVisual server.
           </p>
           <div className="flex justify-center gap-3 relative z-10">
             <a
@@ -320,8 +313,8 @@ export default function ApiPage() {
             >
               Read the docs
             </a>
-            <button className="px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:brightness-110 transition-all text-sm">
-              Upgrade to Pro
+            <button className="px-6 py-3 bg-primary text-black font-semibold rounded-lg hover:brightness-110 transition-all text-sm">
+              Get started
             </button>
           </div>
         </div>

@@ -17,37 +17,37 @@ const sections = [
   {
     title: "2. Description of Service",
     content:
-      "DoVisual provides payment infrastructure for AI agents, including virtual card issuance, virtual IBAN provisioning, credit line allocation, cryptocurrency on/off ramp, programmable spending policies, and audit logging. The Service is accessed via CLI, MCP integration, REST API, and SDKs.",
+      "DoVisual provides cloud infrastructure management tools, including terminal access, Docker container management, file browsing, AI-assisted development via Claude Code, system monitoring, domain and SSL management, and push notifications. The Service is accessed via CLI, REST API, and mobile application.",
   },
   {
     title: "3. User Accounts",
     content:
-      "You must provide a valid email address to create an account. Authentication is performed via magic link tokens. You are responsible for maintaining the security of your account credentials, API keys, and JWT tokens. You must notify us immediately of any unauthorized access.",
+      "You must provide a valid email address to create an account. Authentication is performed via PIN-based login. You are responsible for maintaining the security of your PIN, JWT tokens, and connected devices.",
   },
   {
-    title: "4. Agent Accounts & KYA",
+    title: "4. Server Connections",
     content:
-      "Each AI agent must be registered through our Know Your Agent (KYA) process before it can perform financial transactions. You are responsible for all actions taken by agents registered under your account. Agent registration records the agent's name, framework, purpose, and assigns scoped credentials.",
+      "You are responsible for all actions taken on servers connected to your account. Server connections are authenticated via PIN and JWT tokens. You must ensure authorized access to connected servers.",
   },
   {
     title: "5. Payment Terms",
     content:
-      "The Free tier provides limited access at no cost. The Pro tier is billed monthly at the then-current rate. You authorize us to charge your payment method on file. Unused card balances from pre-funded transactions are released automatically. Transaction fees, if applicable, are disclosed before confirmation.",
+      "The Free tier provides access to one server at no cost. The Pro tier is billed monthly. You authorize us to charge your payment method on file.",
   },
   {
-    title: "6. Credit Lines",
+    title: "6. Server Access",
     content:
-      "Credit lines are subject to approval via our underwriting process. Approved credit must be repaid within the agreed terms (up to 90 days interest-free). Failure to repay may result in suspension of credit privileges and collection action. Credit allocation to agents is your responsibility.",
+      "You are responsible for maintaining appropriate access controls on connected servers. DoVisual provides management tools but does not guarantee server security beyond our platform's authentication layer.",
   },
   {
     title: "7. Prohibited Uses",
     content:
-      "You may not use the Service for illegal activities, money laundering, terrorist financing, sanctions evasion, or any purpose that violates applicable law. You may not attempt to circumvent spending policies, create fraudulent agent identities, or exploit the system to obtain unauthorized credit.",
+      "You may not use the Service for illegal activities, unauthorized access to systems, denial of service attacks, or any purpose that violates applicable law. You must have authorization to manage any server connected to DoVisual.",
   },
   {
     title: "8. Data & Privacy",
     content:
-      "Your use of the Service is also governed by our Privacy Policy. Card data is encrypted with AES-256-GCM at rest. We do not sell your data to third parties. See our Privacy Policy for full details on data collection, use, and retention.",
+      "Your use of the Service is also governed by our Privacy Policy. Server credentials and authentication tokens are encrypted at rest. We do not sell your data to third parties. See our Privacy Policy for full details on data collection, use, and retention.",
   },
   {
     title: "9. Limitation of Liability",
@@ -57,7 +57,7 @@ const sections = [
   {
     title: "10. Termination",
     content:
-      "Either party may terminate this agreement at any time. Upon termination, all active cards will be cancelled, IBAN services will be suspended, and outstanding credit must be repaid. Your data will be retained for the period required by applicable financial regulations.",
+      "Either party may terminate this agreement at any time. Upon termination, all server connections will be removed and authentication tokens revoked. Your data will be retained for the period required by applicable regulations.",
   },
   {
     title: "11. Governing Law",

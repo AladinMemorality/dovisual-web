@@ -7,13 +7,13 @@ import { Terminal } from "@/components/Terminal";
 export const metadata: Metadata = {
   title: "Documentation",
   description:
-    "Guides, references, and tutorials for the DoVisual platform. CLI, API, SDKs, and MCP integration.",
+    "Guides and references for the DoVisual platform. CLI setup, API, AI integration, and server management.",
 };
 
 const categories = [
   {
     title: "Getting Started",
-    desc: "Install the CLI, authenticate, create your first card. Up and running in under 5 minutes.",
+    desc: "Install the CLI, set up your server, connect from your phone. Up and running in under 5 minutes.",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinecap="round" strokeLinejoin="round" />
@@ -22,7 +22,7 @@ const categories = [
   },
   {
     title: "CLI Reference",
-    desc: "Full documentation for all 8 CLI commands, flags, options, and output formats.",
+    desc: "Full documentation for all CLI commands, flags, options, and configuration.",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
         <polyline points="4 17 10 11 4 5" strokeLinecap="round" strokeLinejoin="round" />
@@ -32,7 +32,7 @@ const categories = [
   },
   {
     title: "API Reference",
-    desc: "REST API endpoints, authentication, request/response schemas, error codes, and rate limits.",
+    desc: "REST API endpoints, JWT authentication, request/response schemas, and WebSocket protocols.",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
         <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
@@ -40,8 +40,8 @@ const categories = [
     ),
   },
   {
-    title: "MCP Integration",
-    desc: "Setup guide, tool reference, permission model, and best practices for Claude and other MCP runtimes.",
+    title: "AI Integration",
+    desc: "Setup guide for Claude Code, permission model, and AI-powered server management.",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
         <circle cx="12" cy="12" r="3" />
@@ -50,8 +50,8 @@ const categories = [
     ),
   },
   {
-    title: "SDK Guides",
-    desc: "Node.js and Python SDK setup, framework recipes for LangChain, CrewAI, and AutoGen.",
+    title: "Mobile App",
+    desc: "DoVisual mobile app setup, PIN authentication, and feature walkthrough.",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
         <path d="M4 19.5A2.5 2.5 0 016.5 17H20" strokeLinecap="round" strokeLinejoin="round" />
@@ -61,7 +61,7 @@ const categories = [
   },
   {
     title: "Security & Compliance",
-    desc: "Encryption architecture, authentication flows, agent isolation, and audit logging reference.",
+    desc: "Authentication architecture, PIN security, JWT tokens, device isolation, and transport encryption.",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
         <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -104,8 +104,8 @@ export default function DocsPage() {
               Five minutes.
             </h3>
             <p className="text-zinc-500 text-sm">
-              Install the CLI, authenticate with a magic link, and connect to
-              your AI agent. Everything after that is handled by your agent.
+              Install the CLI, set up your server, and check the status.
+              Everything after that is managed from your phone.
             </p>
           </div>
           <Terminal label="terminal">
@@ -116,14 +116,14 @@ export default function DocsPage() {
               </div>
               <div>
                 <span className="text-primary">$ </span>
-                <span className="text-zinc-300">dovi auth</span>
+                <span className="text-zinc-300">dovi install</span>
               </div>
               <div>
                 <span className="text-primary">$ </span>
-                <span className="text-zinc-300">dovi setup-mcp</span>
+                <span className="text-zinc-300">dovi status</span>
               </div>
               <div className="text-primary">
-                &nbsp; &#10003; Ready to connect to Claude
+                &nbsp; &#10003; Ready &mdash; open the DoVisual app
               </div>
             </div>
           </Terminal>

@@ -6,7 +6,7 @@ import { Divider } from "@/components/Divider";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "DoVisual is building payment infrastructure for the agentic economy. Cards, IBANs, credit, and crypto rails for autonomous AI agents.",
+    "DoVisual is a mobile-first cloud platform. Terminal, containers, AI, and server management from your phone.",
 };
 
 export default function AboutPage() {
@@ -18,17 +18,16 @@ export default function AboutPage() {
         <div className="relative z-10">
           <SectionLabel>About</SectionLabel>
           <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-tight mb-4">
-            Building financial infrastructure
+            Building developer infrastructure
             <br />
             <span className="bg-gradient-to-br from-white/90 to-zinc-500 bg-clip-text text-transparent">
-              for the agentic era.
+              for the mobile era.
             </span>
           </h1>
           <p className="text-zinc-500 max-w-2xl text-base leading-relaxed">
-            AI agents are becoming economic actors. They negotiate, purchase, and
-            settle. But financial infrastructure wasn&apos;t built for non-human
-            principals. DoVisual provides the financial rail for the agentic
-            economy.
+            Developers shouldn&apos;t need a laptop for everything. DoVisual
+            puts full server control in your pocket &mdash; terminal,
+            containers, files, and AI from your phone.
           </p>
         </div>
       </section>
@@ -40,29 +39,27 @@ export default function AboutPage() {
         <div className="max-w-3xl">
           <SectionLabel>Mission</SectionLabel>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-8">
-            AI agents are becoming{" "}
+            Servers shouldn&apos;t require{" "}
             <span className="bg-gradient-to-br from-white/90 to-zinc-500 bg-clip-text text-transparent italic">
-              economic actors.
+              a laptop.
             </span>
           </h2>
           <div className="space-y-4 text-zinc-400 leading-relaxed">
             <p>
-              The next era of commerce isn&apos;t human-to-machine. It&apos;s
-              machine-to-machine. By 2028, 90% of B2B purchases will flow
-              through AI agent exchanges, pushing over $15 trillion through
-              agent-intermediated channels.
+              The cloud runs 24/7, but developers are tied to their laptops.
+              Server issues at dinner, deployment failures on the train, config
+              emergencies at midnight &mdash; the tools haven&apos;t caught up.
             </p>
             <p>
-              AI agents are ready to transact. Financial systems are not. Current
-              infrastructure requires human identity and manual verification.
-              Agents cannot open bank accounts, hold credit cards, or settle
-              payments autonomously.
+              Mobile devices are powerful enough to manage infrastructure.
+              What&apos;s missing is the interface. Current tools are
+              desktop-first afterthoughts on mobile.
             </p>
             <p>
               <span className="text-white font-semibold">DoVisual</span> bridges
-              this gap. We provide the financial operating system for autonomous
-              AI agents &mdash; cards, IBANs, credit lines, and crypto rails in
-              one unified, programmable stack.
+              this gap. We provide the mobile-first operating system for your
+              cloud infrastructure &mdash; terminal, containers, files, and AI
+              in one unified app.
             </p>
           </div>
         </div>
@@ -80,20 +77,20 @@ export default function AboutPage() {
         <div className="grid sm:grid-cols-2 gap-4">
           {[
             {
-              title: "Virtual Cards",
-              desc: "Mastercard-backed virtual cards in GBP, EUR, and USD. Single-use or persistent. Issued in seconds. Spend anywhere Mastercard is accepted globally.",
+              title: "Terminal Access",
+              desc: "Full PTY terminal sessions via WebSocket. Tab completion, colors, history, and scroll buffer. As powerful as your desktop terminal, from your phone.",
             },
             {
-              title: "Virtual IBANs",
-              desc: "Per-agent bank accounts. Receive SEPA, Faster Payments, and wire transfers. Transfer between agents instantly. Full balance and transaction visibility.",
+              title: "Container Management",
+              desc: "Docker lifecycle management. List, start, stop, restart, rebuild containers. View logs, inspect configs, manage compose projects.",
             },
             {
-              title: "Credit Lines",
-              desc: "Business credit with 90-day interest-free terms. AI-powered underwriting engine. Agents create credit-backed cards without pre-funding.",
+              title: "AI Assistant",
+              desc: "Claude Code integrated directly. Deploy apps, debug issues, edit files, and manage infrastructure conversationally. Destructive actions require your approval.",
             },
             {
-              title: "Crypto Rails",
-              desc: "Fund agent cards from USDC or USDT. Real-time exchange rates. Settle agent-to-agent payments on-chain. Emerging market rails included.",
+              title: "System Monitoring",
+              desc: "Real-time CPU, memory, disk, and network stats. Process list, port scanning, and Docker status at a glance.",
             },
           ].map((pillar) => (
             <div
@@ -122,10 +119,10 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { value: "$15T", label: "B2B agent commerce by 2028", source: "Gartner" },
-            { value: "25+", label: "MCP tools registered", source: "DoVisual" },
-            { value: "v1.0.4", label: "Current stable release", source: "DoVisual" },
-            { value: "99.99%", label: "Platform uptime", source: "DoVisual" },
+            { value: "90s", label: "Server setup time", source: "DoVisual" },
+            { value: "6", label: "Core capabilities", source: "DoVisual" },
+            { value: "v1.0.0", label: "Current stable release", source: "DoVisual" },
+            { value: "24/7", label: "Mobile access", source: "DoVisual" },
           ].map((stat) => (
             <div
               key={stat.label}
@@ -158,7 +155,7 @@ export default function AboutPage() {
           </p>
           <a
             href="mailto:hello@dovisual.com"
-            className="inline-block px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:brightness-110 transition-all text-sm relative z-10"
+            className="inline-block px-6 py-3 bg-primary text-black font-semibold rounded-lg hover:brightness-110 transition-all text-sm relative z-10"
           >
             hello@dovisual.com
           </a>

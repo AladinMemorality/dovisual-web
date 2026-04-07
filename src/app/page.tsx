@@ -11,10 +11,10 @@ import { GetStartedButton, ConnectClaudeButton } from "@/components/InstallModal
 
 export const metadata: Metadata = {
   title: {
-    absolute: "DoVisual — Payment infrastructure for AI agents",
+    absolute: "DoVisual — Mobile-first cloud platform for developers",
   },
   description:
-    "Cards, IBANs, credit lines, and crypto rails for autonomous AI agents. Issue a card in seconds, hand the details to any agent, spend anywhere Mastercard is accepted.",
+    "Deploy apps, manage containers, and code with AI from your phone. Terminal, Docker, Claude Code — one app, zero friction.",
 };
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
     url: "https://dovisual.com",
     logo: "https://dovisual.com/og.png",
     description:
-      "Payment infrastructure for autonomous AI agents.",
+      "Mobile-first cloud platform for developers.",
     sameAs: [],
   };
 
@@ -52,27 +52,27 @@ export default function Home() {
                 </span>
                 <span className="text-zinc-700">/</span>
                 <span className="text-zinc-600">
-                  Cards + IBANs + Credit + Crypto
+                  Terminal + Docker + AI + Files
                 </span>
                 <span className="text-zinc-700">/</span>
                 <span className="text-primary font-medium">
-                  MCP integration included
+                  Claude Code built in
                 </span>
                 <span className="text-zinc-700">/</span>
                 <span className="text-zinc-600">
-                  Multi-currency: GBP, EUR, USD
+                  Full Linux terminal from mobile
                 </span>
                 <span className="text-zinc-700">/</span>
-                <span className="text-primary font-medium">25+ MCP tools</span>
+                <span className="text-primary font-medium">Docker management</span>
                 <span className="text-zinc-700">/</span>
-                <span className="text-zinc-600">API access on Pro</span>
+                <span className="text-zinc-600">Push notifications</span>
                 <span className="text-zinc-700">/</span>
                 <span className="text-primary font-medium">
-                  KYA agent registry
+                  Auto SSL &amp; domains
                 </span>
                 <span className="text-zinc-700">/</span>
                 <span className="text-zinc-600">
-                  90-day interest-free credit
+                  System monitoring
                 </span>
                 <span className="text-zinc-700">/</span>
               </div>
@@ -90,20 +90,19 @@ export default function Home() {
                 Now in beta
               </div>
               <h1 className="font-black font-headline tracking-tighter leading-[1.08] text-white text-4xl md:text-5xl lg:text-[clamp(2.4rem,6vw,4.2rem)]">
-                Your AI agent
+                Your cloud
                 <br />
                 <span className="bg-gradient-to-br from-white/90 to-zinc-500 bg-clip-text text-transparent">
-                  can pay for anything
+                  Your command
                 </span>
                 <span className="text-primary">.</span>
               </h1>
               <p className="text-base md:text-lg text-zinc-500 max-w-[520px] leading-relaxed">
-                Cards, IBANs, credit lines, and crypto rails for autonomous AI
-                agents. Issue a card in seconds, hand the details to any agent,
-                spend anywhere Mastercard is accepted.
+                Terminal, containers, files, and AI — managed from your phone.
+                Set up a VPS in 90 seconds, deploy from anywhere.
               </p>
               <div className="flex flex-wrap gap-3 pt-2">
-                <GetStartedButton className="px-5 py-2.5 bg-primary text-white font-semibold rounded-lg hover:brightness-110 transition-all text-sm">
+                <GetStartedButton className="px-5 py-2.5 bg-primary text-black font-semibold rounded-lg hover:brightness-110 transition-all text-sm">
                   Get started free
                 </GetStartedButton>
                 <ConnectClaudeButton className="px-5 py-2.5 border border-white/[0.08] text-zinc-500 font-semibold rounded-lg hover:border-white/[0.15] hover:text-white transition-all text-sm">
@@ -131,8 +130,8 @@ export default function Home() {
                 in three commands
               </h3>
               <p className="text-zinc-500 text-sm">
-                Install the CLI, authenticate, connect to your AI agent.
-                Everything after that is handled by your agent.
+                Install the CLI, set up your server, connect from your phone.
+                Everything after that is at your fingertips.
               </p>
             </div>
             <Terminal label="terminal">
@@ -143,32 +142,16 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="text-primary">$ </span>
-                  <span className="text-zinc-300">dovi auth</span>
-                </div>
-                <div>
-                  <span className="text-zinc-500">
-                    &nbsp; Enter your email{" "}
-                  </span>
-                  <span className="text-blue-400">&rarr;</span>
-                  <span className="text-zinc-500">
-                    {" "}
-                    click the magic link{" "}
-                  </span>
-                  <span className="text-blue-400">&rarr;</span>
-                  <span className="text-primary"> authenticated</span>
-                </div>
-                <div>
-                  <span className="text-primary">$ </span>
-                  <span className="text-zinc-300">dovi setup-mcp</span>
+                  <span className="text-zinc-300">dovi install</span>
                 </div>
                 <div className="text-primary">
-                  &nbsp; &#10003; MCP config written
+                  &nbsp; &#10003; Server configured
                 </div>
                 <div className="text-primary">
-                  &nbsp; &#10003; 35 tools registered
+                  &nbsp; &#10003; SSL issued
                 </div>
                 <div className="text-primary">
-                  &nbsp; &#10003; Ready to connect to Claude
+                  &nbsp; &#10003; Ready — open the DoVisual app
                 </div>
               </div>
             </Terminal>
@@ -181,60 +164,59 @@ export default function Home() {
         <section id="commands" className="max-w-[1120px] mx-auto px-8 py-28">
           <span className="text-[11px] font-bold tracking-[0.2em] text-primary uppercase flex items-center gap-3 mb-3">
             <span className="w-5 h-px bg-primary" />
-            CLI &amp; MCP
+            CLI &amp; API
           </span>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-3">
-            Seven resource groups.
+            Eight capabilities.
             <br />
-            One unified interface.
+            One unified platform.
           </h2>
           <p className="text-zinc-500 max-w-xl mb-12 text-sm">
-            Every CLI command is also an MCP tool and a REST API endpoint. The
-            CLI is your interface. The MCP server is the agent&apos;s interface.
-            Same backend.
+            Every feature is accessible via CLI, REST API, and the mobile app.
+            The CLI sets up your server. The app is your daily interface.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               {
-                name: "dovi agents register",
-                desc: "Register an AI agent with KYA identity. Returns scoped credentials. Required before any financial activity.",
-                flags: ["--name", "--framework", "--purpose"],
+                name: "dovi install",
+                desc: "Set up Dovi on any VPS. Installs systemd service, nginx reverse proxy, and SSL certificates. One command, full stack.",
+                flags: ["--domain", "--email", "--name"],
               },
               {
-                name: "dovi cards create",
-                desc: "Issue a virtual Mastercard. Single-use or persistent. Multi-currency. Funded from balance, credit, or stablecoins.",
-                flags: ["--amount", "--currency", "--agent", "--single-use"],
+                name: "dovi config set",
+                desc: "Configure your server: domain, port, shell, AI credentials. All settings stored in /etc/dovi/config.json.",
+                flags: ["--port", "--domain", "--shell"],
               },
               {
-                name: "dovi ibans create",
-                desc: "Provision a virtual IBAN for an agent. Receive SEPA, Faster Payments, or wire transfers directly.",
-                flags: ["--currency", "--agent", "--label"],
+                name: "dovi start",
+                desc: "Start the Dovi server. Launches the API, terminal multiplexer, and WebSocket connections.",
+                flags: ["--port", "--host"],
               },
               {
-                name: "dovi credit allocate",
-                desc: "Distribute your business credit line to an agent. The agent creates credit-backed cards up to the allocated amount.",
-                flags: ["--agent", "--amount", "--currency"],
+                name: "dovi status",
+                desc: "Check service health: uptime, CPU, memory, disk, running containers, and active terminal sessions.",
+                flags: [],
               },
               {
-                name: "dovi crypto fund",
-                desc: "Convert USDC or USDT to fiat and deposit into a card or IBAN. Real-time exchange rate shown before confirmation.",
-                flags: ["--to", "--amount", "--token"],
+                name: "dovi pin",
+                desc: "View or reset your 6-digit authentication PIN. PIN-based auth keeps your server secure from mobile.",
+                flags: ["reset"],
               },
               {
-                name: "dovi policies create",
-                desc: "Define a programmable spending policy: per-txn limits, daily caps, merchant restrictions, approval thresholds.",
-                flags: ["--max-txn", "--daily-limit", "--allowed-mcc"],
+                name: "dovi update",
+                desc: "Download the latest Dovi binary and restart the service. Zero-downtime upgrades.",
+                flags: [],
               },
               {
-                name: "dovi invoices pay",
-                desc: "Trigger payment for a verified invoice. Supports multi-currency and extended 90-day interest-free terms.",
-                flags: ["--source", "--agent"],
+                name: "dovi restart",
+                desc: "Restart the Dovi service. Preserves terminal sessions and container state.",
+                flags: [],
               },
               {
-                name: "dovi audit log --follow",
-                desc: "Stream the live audit log. Every transaction, card creation, policy change, and anomaly alert in real time.",
-                flags: ["--agent", "--since", "--type"],
+                name: "dovi config",
+                desc: "Show current configuration: domain, port, shell, AI setup status, and active devices.",
+                flags: [],
               },
             ].map((cmd) => (
               <div
@@ -270,33 +252,33 @@ export default function Home() {
             <div className="space-y-3">
               <span className="text-[11px] font-bold tracking-[0.2em] text-primary uppercase flex items-center gap-3">
                 <span className="w-5 h-px bg-primary" />
-                MCP Integration
+                API Capabilities
               </span>
               <h3 className="text-2xl font-bold tracking-tight leading-tight">
-                Connect to Claude.
+                Full server control.
                 <br />
-                One command.
+                From any device.
               </h3>
               <p className="text-zinc-500 text-sm">
-                Give Claude direct access to cards, IBANs, credit, and payments.
-                25+ tools registered. Destructive actions require your approval.
-                Read-only actions execute instantly.
+                The DoVisual API exposes every capability. Terminal sessions,
+                container management, file operations, system monitoring, and
+                AI — all via REST.
               </p>
             </div>
-            <Terminal label="what Claude sees">
+            <Terminal label="API endpoints">
               <div className="space-y-0">
                 {[
-                  ["create_card", "Issue a virtual card"],
-                  ["create_iban", "Provision a virtual IBAN"],
-                  ["get_card_details", "PAN, CVV, expiry on demand"],
-                  ["check_balance", "Card or IBAN balance"],
-                  ["freeze_card", "Instant freeze / unfreeze"],
-                  ["transfer_funds", "Move funds between IBANs"],
-                  ["credit_status", "View credit line details"],
-                  ["allocate_credit", "Assign credit to an agent"],
-                  ["fund_from_crypto", "Stablecoin to fiat"],
-                  ["pay_invoice", "Trigger supplier payment"],
-                  ["list_transactions", "View transaction history"],
+                  ["GET /api/stats", "CPU, memory, disk, network"],
+                  ["GET /api/docker/containers", "List all Docker containers"],
+                  ["POST /api/sessions", "Create terminal session"],
+                  ["GET /api/files/list", "Browse server filesystem"],
+                  ["GET /api/files/read", "Read file contents"],
+                  ["POST /api/docker/.../start", "Start a container"],
+                  ["POST /api/docker/.../stop", "Stop a container"],
+                  ["POST /api/ai/sessions", "Start Claude Code session"],
+                  ["GET /api/sites", "List nginx sites"],
+                  ["POST /api/files/upload-to", "Upload files to server"],
+                  ["WS /ws/:sessionId", "Live terminal WebSocket"],
                 ].map(([name, desc]) => (
                   <div key={name} className="flex">
                     <span className="text-primary inline-block min-w-[22ch]">
@@ -305,7 +287,7 @@ export default function Home() {
                     <span className="text-zinc-500">{desc}</span>
                   </div>
                 ))}
-                <div className="text-zinc-700">&nbsp; ... +14 more tools</div>
+                <div className="text-zinc-700">&nbsp; ... +8 more endpoints</div>
               </div>
             </Terminal>
           </div>
@@ -318,58 +300,58 @@ export default function Home() {
 
         <Divider />
 
-        {/* Why aiPay */}
+        {/* Why DoVisual */}
         <section className="max-w-[1120px] mx-auto px-8 py-28">
           <span className="text-[11px] font-bold tracking-[0.2em] text-primary uppercase flex items-center gap-3 mb-3">
             <span className="w-5 h-px bg-primary" />
             Why DoVisual
           </span>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-12">
-            Not just cards.
-            <br />A full financial stack.
+            Not just a terminal.
+            <br />A full server stack.
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               {
                 n: "01",
-                title: "Instant issuance",
-                desc: "Virtual cards ready in seconds. No waiting, no manual approval queues, no delays. Fund and issue in one command.",
+                title: "Full terminal from mobile",
+                desc: "PTY terminal sessions via WebSocket. Tab completion, colors, scroll buffer. No SSH app needed.",
               },
               {
                 n: "02",
-                title: "Multi-currency native",
-                desc: "Issue cards and IBANs in GBP, EUR, and USD. Spend in any currency globally. FX conversion built in.",
+                title: "Docker dashboard",
+                desc: "List, start, stop, restart, and rebuild containers. View logs, inspect configs, manage compose projects.",
               },
               {
                 n: "03",
-                title: "Credit lines, not just pre-funding",
-                desc: "Business credit with 90-day interest-free terms. Agents spend on credit. No need to pre-fund every card from your bank account.",
+                title: "Claude Code built in",
+                desc: "AI assistant with full server access. Deploy apps, fix configs, write code — conversationally from your phone.",
               },
               {
                 n: "04",
-                title: "Virtual IBANs per agent",
-                desc: "Each agent gets its own bank account. Receive payments, settlements, and refunds. Transfer between agents instantly.",
+                title: "File manager",
+                desc: "Browse, read, edit, upload, and delete files. Git clone repos directly. Search by name across your server.",
               },
               {
                 n: "05",
-                title: "Programmable policies",
-                desc: "MCC restrictions, amount thresholds, time windows, auto-approval rules. Policies stack. Most restrictive wins.",
+                title: "System monitoring",
+                desc: "Real-time CPU, memory, disk, and network stats. Process list, port scanning, Docker container status.",
               },
               {
                 n: "06",
-                title: "Crypto on/off ramp",
-                desc: "Fund agent cards from USDC or USDT. Settle agent-to-agent payments on-chain. Emerging market rails included.",
+                title: "Auto SSL & domains",
+                desc: "Cloudflare DNS integration. Automatic subdomain creation and Let's Encrypt certificate provisioning.",
               },
               {
                 n: "07",
-                title: "Human in the loop",
-                desc: "You authorize every card creation and every payment. Agents propose, you approve. Below-threshold actions auto-execute.",
+                title: "Push notifications",
+                desc: "Get alerts when deployments finish, containers crash, or AI tasks complete. Never miss a critical event.",
               },
               {
                 n: "08",
-                title: "Built for every agent",
-                desc: "MCP integration for Claude, Cursor, and any MCP runtime. REST API and SDKs for LangChain, CrewAI, AutoGen, and custom agents.",
+                title: "One-command setup",
+                desc: "Run dovi install on any Ubuntu VPS. Systemd, nginx, SSL — everything configured automatically in under 90 seconds.",
               },
             ].map((item) => (
               <div
@@ -403,34 +385,34 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               {
-                label: "Card data at rest",
-                value: "AES-256-GCM",
-                desc: "PAN and CVV encrypted with a random IV per field. Decrypted only on your explicit request.",
+                label: "Credentials at rest",
+                value: "PIN + JWT",
+                desc: "6-digit PIN for mobile auth. JWT tokens signed with HS256. Device-scoped, revocable, configurable expiry.",
               },
               {
                 label: "Authentication",
-                value: "Magic links + API keys",
-                desc: "32-byte cryptographically random tokens. One-use, 15-minute expiry. No passwords stored.",
+                value: "PIN-based auth",
+                desc: "No passwords stored. 6-digit PIN verified on device. JWT tokens issued per device with configurable expiry.",
               },
               {
-                label: "Session tokens",
-                value: "JWT HS256",
-                desc: "Signed with a 256-bit secret. Stored locally at mode 0600. 30-day expiry.",
+                label: "Transport",
+                value: "TLS 1.3 + WSS",
+                desc: "All API calls over HTTPS. Terminal sessions over secure WebSocket. No plaintext connections.",
               },
               {
-                label: "MCP access",
-                value: "Per-request JWT",
-                desc: "Every MCP request is authenticated with your JWT. No shared credentials between users or agents.",
+                label: "AI permissions",
+                value: "Human-in-the-loop",
+                desc: "Every destructive AI action requires your approval. Claude Code proposes, you decide. Read-only actions execute instantly.",
               },
               {
-                label: "Agent isolation",
-                value: "Scoped credentials",
-                desc: "Each agent gets its own API key. One compromised agent cannot access another agent's cards or funds.",
+                label: "Device isolation",
+                value: "Per-device tokens",
+                desc: "Each connected device gets its own JWT. One compromised device can be revoked without affecting others.",
               },
               {
-                label: "Audit trail",
-                value: "Full compliance log",
-                desc: "Every action logged with timestamp, actor, and context. Exportable as CSV or JSON for compliance.",
+                label: "API security",
+                value: "Bearer tokens",
+                desc: "All API endpoints require authentication. Tokens expire after configurable duration. Device tracking and last-active logging.",
               },
             ].map((item) => (
               <div
@@ -476,15 +458,15 @@ export default function Home() {
               <div className="text-sm text-zinc-600 mb-6">forever</div>
               <ul className="space-y-2 text-sm mb-8">
                 {[
-                  [true, "5 virtual cards / month"],
-                  [true, "1 virtual IBAN"],
-                  [true, "1 registered agent"],
-                  [true, "MCP integration included"],
-                  [true, "Human-in-the-loop approvals"],
-                  [true, "AES-256-GCM encryption"],
+                  [true, "1 VPS connection"],
+                  [true, "Full terminal access"],
+                  [true, "Docker management"],
+                  [true, "File browser & editor"],
+                  [true, "Claude Code integration"],
+                  [true, "Push notifications"],
+                  [false, "Multiple servers"],
                   [false, "API access"],
-                  [false, "Credit lines"],
-                  [false, "Crypto bridge"],
+                  [false, "Team features"],
                 ].map(([enabled, text], i) => (
                   <li
                     key={i}
@@ -508,23 +490,23 @@ export default function Home() {
                 Pro
               </div>
               <div className="text-5xl font-black tracking-tight">
-                $49
+                $29
                 <span className="text-lg font-normal text-zinc-600">/mo</span>
               </div>
               <div className="text-sm text-zinc-600 mb-6">
-                per organization
+                per server
               </div>
               <ul className="space-y-2 text-sm mb-8">
                 {[
-                  "Unlimited virtual cards",
-                  "Unlimited virtual IBANs",
-                  "Unlimited agents",
-                  "MCP integration included",
+                  "Unlimited VPS connections",
+                  "Full terminal access",
+                  "Docker management",
+                  "File browser & editor",
+                  "Claude Code integration",
+                  "Push notifications",
                   "Full REST API access",
-                  "Programmable policy engine",
-                  "Credit lines (subject to approval)",
-                  "Crypto on/off ramp",
-                  "Accounting integrations",
+                  "Team management",
+                  "Multiple devices",
                   "Priority support",
                 ].map((text, i) => (
                   <li
@@ -536,7 +518,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <button className="w-full py-2.5 bg-primary text-white font-semibold rounded-lg hover:brightness-110 transition-all text-sm">
+              <button className="w-full py-2.5 bg-primary text-black font-semibold rounded-lg hover:brightness-110 transition-all text-sm">
                 Upgrade to Pro
               </button>
             </div>
@@ -556,33 +538,33 @@ export default function Home() {
           </h2>
 
           <FaqItem
-            question="How does payment work?"
-            answer="You fund your account via card, bank transfer, credit line, or stablecoins. When an agent creates a virtual card, funds are allocated from your balance or credit line. You're only charged for the actual transaction amount. Unused funds are released automatically."
+            question="How does it work?"
+            answer="Install the dovi CLI on any Ubuntu VPS, run dovi install, and your server is configured with systemd, nginx, and SSL in under 90 seconds. Open the DoVisual app on your phone, enter your PIN, and you have full terminal, Docker, file, and AI access."
             defaultOpen
           />
           <FaqItem
-            question="Does the agent spend money without my permission?"
-            answer="No. You authorize every card creation and payment before it happens. The agent proposes an action, and you approve or deny it in real time. You can set auto-approval thresholds for low-value, routine transactions."
+            question="Do I need a laptop?"
+            answer="No. DoVisual is designed for mobile-first server management. Terminal sessions, Docker controls, file editing, and AI chat all work from your phone. For complex coding sessions, you can also use the web interface."
           />
           <FaqItem
-            question="What currencies are supported?"
-            answer="Cards and IBANs can be issued in GBP, EUR, and USD. Agents can spend in any currency globally via Mastercard acceptance. FX conversion is handled automatically. Stablecoin funding supports USDC and USDT."
+            question="Which VPS providers work?"
+            answer="Any provider running Ubuntu 24.04 — Hetzner, DigitalOcean, Linode, AWS, Vultr, or any other. You can also let DoVisual provision a server for you automatically."
           />
           <FaqItem
-            question="Which AI agents can use it?"
-            answer="Any MCP-compatible agent (Claude, Cursor, any MCP runtime) connects with one command. The REST API and SDKs (Node.js, Python) support LangChain, CrewAI, AutoGen, and any custom agent framework."
+            question="How does AI integration work?"
+            answer="Claude Code runs directly on your server. You chat with it from the DoVisual app, and it can execute commands, edit files, manage containers, and deploy applications. Destructive actions always require your approval."
           />
           <FaqItem
-            question="How do credit lines work?"
-            answer="Your business applies for a credit line (subject to approval via our AI credit engine). Once approved, you can allocate credit across your agent fleet. Agents create credit-backed cards. You get up to 90 days interest-free. Repay on your terms."
+            question="Is it secure?"
+            answer="Yes. Authentication uses a 6-digit PIN with JWT tokens. All connections are encrypted via TLS 1.3. Each device gets its own token that can be revoked independently. AI actions require human approval for anything destructive."
           />
           <FaqItem
-            question="What is KYA (Know Your Agent)?"
-            answer="KYA is our agent identity layer. Every AI agent must be registered before it can transact. Registration records the agent's name, framework, purpose, and assigns scoped credentials. This creates an auditable chain from agent action to human principal."
+            question="Can I manage Docker containers?"
+            answer="Yes. Full container lifecycle management — list, start, stop, restart, rebuild, view logs, and inspect configurations. Docker Compose projects are detected automatically."
           />
           <FaqItem
-            question="How is my card data protected?"
-            answer="Card details are encrypted with AES-256-GCM at rest and only decrypted on your explicit request. Each agent gets isolated credentials. Full audit logging tracks every access. No raw card numbers are ever stored."
+            question="What about my existing server?"
+            answer="Run dovi install on any existing Ubuntu VPS. It sets up alongside your existing services without interfering. Your existing Docker containers, files, and configurations remain untouched."
           />
         </section>
 
@@ -593,15 +575,15 @@ export default function Home() {
           <div className="relative bg-zinc-950 border border-white/[0.08] rounded-[20px] p-16 text-center overflow-hidden">
             <div className="absolute w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.06)_0%,transparent_65%)] -top-[200px] left-1/2 -translate-x-1/2 pointer-events-none" />
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight relative z-10">
-              Your agents are ready to transact.
+              Your server is waiting.
               <br />
-              Give them the infrastructure.
+              Manage it from anywhere.
             </h2>
             <p className="text-zinc-500 mt-4 mb-8 max-w-md mx-auto text-sm relative z-10">
-              Free to start. No credit card required. Three commands and your AI
-              agent has its own financial stack.
+              Free to start. No credit card required. One command and your VPS
+              has a mobile-first control plane.
             </p>
-            <GetStartedButton className="px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:brightness-110 transition-all text-sm relative z-10">
+            <GetStartedButton className="px-6 py-3 bg-primary text-black font-semibold rounded-lg hover:brightness-110 transition-all text-sm relative z-10">
               Get started free
             </GetStartedButton>
           </div>

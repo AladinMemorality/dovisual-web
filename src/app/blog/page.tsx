@@ -7,36 +7,36 @@ import { SubscribeForm } from "@/components/SubscribeForm";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Product updates, engineering deep-dives, and insights on AI agent commerce.",
+    "Product updates, engineering deep-dives, and insights on mobile-first cloud management.",
 };
 
 const posts = [
   {
     date: "March 15, 2026",
-    title: "Why AI Agents Need Their Own Bank Accounts",
+    title: "Why Every Developer Needs a Server in Their Pocket",
     excerpt:
-      "AI agents are becoming economic actors. They negotiate, purchase, and settle. But financial infrastructure wasn't built for non-human principals. Here's how we're changing that.",
+      "Server issues don't wait for business hours. DoVisual puts full terminal, Docker, and AI access on your phone so you can respond from anywhere.",
     featured: false,
   },
   {
     date: "February 28, 2026",
-    title: "Building a Secure MCP Integration for Financial Data",
+    title: "Building a Secure Mobile Terminal with WebSockets",
     excerpt:
-      "How we designed the aiPay MCP server to give Claude access to cards, IBANs, and payments while maintaining strict security boundaries.",
+      "How we built a full PTY terminal that runs in a mobile app. WebSocket connections, scroll buffers, and the challenges of touch-based terminal interaction.",
     featured: false,
   },
   {
     date: "February 10, 2026",
-    title: "KYA: Know Your Agent — Our Approach to Agent Identity",
+    title: "How Claude Code Powers Server Management from Your Phone",
     excerpt:
-      "Every AI agent must be registered before it can transact. We explain the design behind our agent identity layer and why it matters for compliance.",
+      "We integrated Claude Code directly into DoVisual. Chat with AI to deploy apps, fix configs, and manage your server conversationally — with human approval for destructive actions.",
     featured: false,
   },
   {
     date: "January 22, 2026",
-    title: "90-Day Interest-Free Credit Lines for Agent Commerce",
+    title: "One Command to Rule Them All: The dovi install Story",
     excerpt:
-      "Pre-funding every transaction limits agent autonomy. Credit lines let agents spend first, repay later. Here's how our AI credit engine works.",
+      "How we designed a single CLI command that sets up systemd, nginx, SSL, and a full REST API on any Ubuntu VPS in under 90 seconds.",
     featured: false,
   },
 ];
@@ -53,8 +53,8 @@ export default function BlogPage() {
             From the team.
           </h1>
           <p className="text-zinc-500 max-w-xl text-base leading-relaxed">
-            Product updates, engineering deep-dives, and insights on AI agent
-            commerce.
+            Product updates, engineering deep-dives, and insights on
+            mobile-first cloud management.
           </p>
         </div>
       </section>
@@ -72,13 +72,13 @@ export default function BlogPage() {
             <span className="text-xs text-zinc-600">March 20, 2026</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
-            Introducing DoVisual: Payment Infrastructure for AI Agents
+            Introducing DoVisual: Your Cloud, Your Command
           </h2>
           <p className="text-zinc-500 max-w-2xl leading-relaxed mb-6">
-            Today we&apos;re launching DoVisual in public beta. Cards, IBANs,
-            credit lines, and crypto rails for autonomous AI agents. Three
-            commands and your AI agent has its own financial stack. Here&apos;s
-            why we built it and what&apos;s next.
+            Today we&apos;re launching DoVisual in public beta. Terminal,
+            Docker, files, and Claude Code &mdash; all managed from your phone.
+            One command sets up your server. Here&apos;s why we built it and
+            what&apos;s next.
           </p>
           <span className="text-primary text-sm font-semibold hover:underline">
             Read more &rarr;

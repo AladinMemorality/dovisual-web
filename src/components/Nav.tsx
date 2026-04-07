@@ -189,7 +189,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
           >
             Deck
           </a>
-          <GetStartedButton className="text-center bg-primary text-white px-4 py-2.5 rounded-lg text-[13px] font-semibold hover:brightness-110 transition-all">
+          <GetStartedButton className="text-center bg-primary text-black px-4 py-2.5 rounded-lg text-[13px] font-semibold hover:brightness-110 transition-all">
             Get started
           </GetStartedButton>
         </div>
@@ -220,7 +220,7 @@ export function Nav() {
             className="text-sm font-bold tracking-tight flex items-center gap-2"
           >
             <Logo />
-            aiPay<span className="text-primary">.</span>sh
+            DoVisual
           </a>
           <div className="hidden md:flex items-center gap-5">
             <ProductsDropdown />
@@ -250,7 +250,7 @@ export function Nav() {
           >
             Deck
           </a>
-          <GetStartedButton className="bg-primary text-white px-4 py-1.5 rounded-lg text-[13px] font-semibold hover:brightness-110 transition-all">
+          <GetStartedButton className="bg-primary text-black px-4 py-1.5 rounded-lg text-[13px] font-semibold hover:brightness-110 transition-all">
             Get started
           </GetStartedButton>
         </div>

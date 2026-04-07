@@ -12,37 +12,37 @@ const sections = [
   {
     title: "1. Information We Collect",
     content:
-      "We collect information you provide when creating an account (email address), registering agents (agent name, framework, purpose), and conducting transactions (amounts, currencies, merchant details). We also collect API usage data, authentication events, and audit log entries for security and compliance purposes.",
+      "We collect information you provide when creating an account (email address), server connection data (hostname, IP address), terminal session data, container management logs, file access logs, AI chat history, and API usage data. We also collect authentication events and audit log entries for security purposes.",
   },
   {
     title: "2. How We Use Information",
     content:
-      "We use your information to provide and maintain the Service, process transactions, issue virtual cards and IBANs, manage credit lines, authenticate requests, detect and prevent fraud, comply with financial regulations, and improve our platform. We do not use your data for advertising.",
+      "We use your information to provide and maintain the Service, manage server connections, process terminal sessions, authenticate devices, detect and prevent unauthorized access, and improve our platform. We do not use your data for advertising.",
   },
   {
     title: "3. Data Encryption",
     content:
-      "Card data (PAN, CVV) is encrypted at rest using AES-256-GCM with a random initialization vector per field. Card data is decrypted only on your explicit request. Session tokens are signed with HS256 and stored locally with restricted file permissions (mode 0600). All data in transit is encrypted via TLS 1.3.",
+      "Server credentials and authentication tokens are encrypted at rest. JWT tokens are signed with HS256. All data in transit is encrypted via TLS 1.3. PIN codes are hashed and never stored in plaintext.",
   },
   {
-    title: "4. Agent Data",
+    title: "4. Server Data",
     content:
-      "Each registered agent receives scoped credentials that are isolated from other agents. One compromised agent cannot access another agent's cards, IBANs, or funds. Agent registration data (name, framework, purpose) is stored to maintain the KYA identity chain. Agent-generated transaction data is attributed and auditable.",
+      "Terminal session content is ephemeral and not permanently stored. File operations are logged for audit purposes. Docker container management actions are logged. AI chat sessions are stored for session continuity.",
   },
   {
     title: "5. Data Retention",
     content:
-      "Account data is retained for the lifetime of your account. Transaction records and audit logs are retained for a minimum of 7 years as required by financial regulations. Upon account termination, personal data is deleted within 30 days, except where retention is required by law.",
+      "Account data is retained for the lifetime of your account. Audit logs are retained for a minimum of 7 years as required by applicable regulations. Upon account termination, personal data is deleted within 30 days, except where retention is required by law.",
   },
   {
     title: "6. Third Parties",
     content:
-      "We share data with banking partners and the Mastercard network as necessary to process transactions and issue cards. We do not sell your personal data to third parties. We may share anonymized, aggregated data for analytical purposes. We use industry-standard subprocessors for infrastructure (hosting, monitoring).",
+      "We share data with infrastructure providers as necessary. We do not sell your personal data. We use industry-standard subprocessors for hosting and monitoring.",
   },
   {
     title: "7. Your Rights",
     content:
-      "You have the right to access, correct, and delete your personal data. You can export your transaction history and audit logs as CSV or JSON at any time. To exercise these rights, contact us at privacy@dovisual.com. We will respond to requests within 30 days.",
+      "You have the right to access, correct, and delete your personal data. You can export your data at any time. To exercise these rights, contact us at privacy@dovisual.com. We will respond to requests within 30 days.",
   },
   {
     title: "8. Cookies & Analytics",

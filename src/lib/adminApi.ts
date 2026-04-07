@@ -128,6 +128,16 @@ export interface ServerInfo {
   created_at: string;
 }
 
+export interface DnsRecordInfo {
+  id: number;
+  domain: string;
+  record_type: string;
+  ip: string;
+  proxied: boolean;
+  cf_record_id: string | null;
+  created_at: string;
+}
+
 export interface UserDetail {
   id: number;
   email: string;
@@ -135,6 +145,7 @@ export interface UserDetail {
   created_at: string;
   verified_at: string | null;
   servers: ServerInfo[];
+  dns_records: DnsRecordInfo[];
 }
 
 export async function listUsers(): Promise<UserSummary[]> {
@@ -182,5 +193,15 @@ export async function adminDeprovision(serverId: number): Promise<void> {
   if (!res.ok) {
     const err = await res.json();
     throw new Error(err.detail || "Deprovision failed");
+  }
+}
+
+export async function adminDeleteDnsRecord(recordId: number): Promise<void> {
+  const res = await adminFetch(`/admin/dns-records/${recordId}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.detail || "Failed to delete DNS record");
   }
 }

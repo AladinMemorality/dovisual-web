@@ -20,26 +20,26 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL("https://dovisual.com"),
   title: {
-    default: "DoVisual — Payment infrastructure for AI agents",
+    default: "DoVisual — Mobile-first cloud platform for developers",
     template: "%s — DoVisual",
   },
   description:
-    "Cards, IBANs, credit lines, and crypto rails for autonomous AI agents.",
+    "Deploy apps, manage containers, and code with AI — all from your phone. Turn any VPS into a full dev environment.",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://dovisual.com",
     siteName: "DoVisual",
-    title: "DoVisual — Payment infrastructure for AI agents",
+    title: "DoVisual — Mobile-first cloud platform for developers",
     description:
-      "Cards, IBANs, credit lines, and crypto rails for autonomous AI agents.",
+      "Deploy apps, manage containers, and code with AI — all from your phone. Turn any VPS into a full dev environment.",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "DoVisual" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DoVisual — Payment infrastructure for AI agents",
+    title: "DoVisual — Mobile-first cloud platform for developers",
     description:
-      "Cards, IBANs, credit lines, and crypto rails for autonomous AI agents.",
+      "Deploy apps, manage containers, and code with AI — all from your phone. Turn any VPS into a full dev environment.",
     images: ["/og.png"],
   },
   icons: {

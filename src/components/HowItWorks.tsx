@@ -7,44 +7,45 @@ const steps = [
     step: "STEP 01",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-        <rect x="2" y="5" width="20" height="14" rx="2" />
-        <path d="M2 10h20" />
+        <rect x="2" y="3" width="20" height="18" rx="2" />
+        <path d="M2 9h20" />
       </svg>
     ),
-    title: "Pre-approve the amount",
-    desc: "Add your debit or credit card and choose how much your agent can spend. We place a hold for that amount \u2014 nothing is charged yet.",
+    title: "Get a VPS",
+    desc: "Provision an Ubuntu server from any cloud provider \u2014 Hetzner, DigitalOcean, AWS, or let us create one for you in seconds.",
   },
   {
     step: "STEP 02",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-        <path d="M12 5v14M5 12h14" strokeLinecap="round" />
+        <polyline points="4 17 10 11 4 5" strokeLinecap="round" strokeLinejoin="round" />
+        <line x1="12" y1="19" x2="20" y2="19" strokeLinecap="round" />
       </svg>
     ),
-    title: "Agent creates a card",
-    desc: "When the agent needs to pay, it creates a virtual debit card for the exact amount \u2014 no more, no less.",
+    title: "Install Dovi",
+    desc: "Run dovi install. Sets up systemd, nginx, SSL, and the API \u2014 all in one command. Your server is ready in under 90 seconds.",
   },
   {
     step: "STEP 03",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-        <circle cx="12" cy="12" r="9" />
-        <path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="5" y="2" width="14" height="20" rx="2" />
+        <path d="M12 18h.01" strokeLinecap="round" />
       </svg>
     ),
-    title: "Agent pays",
-    desc: "The agent uses the card for a single transaction. Once used, the card is automatically cancelled.",
+    title: "Connect from your phone",
+    desc: "Open the DoVisual app, enter your PIN, and you\u2019re in. Full terminal, Docker dashboard, file manager \u2014 all from your pocket.",
   },
   {
     step: "STEP 04",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-        <path d="M1 4v6h6" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M3.51 15a9 9 0 105.36-9.36L1 10" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="12" cy="12" r="3" />
+        <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
       </svg>
     ),
-    title: "Unused amount is released",
-    desc: "Only the actual transaction amount is captured. Anything the agent doesn\u2019t spend is released \u2014 it never hits your card.",
+    title: "Let AI help",
+    desc: "Chat with Claude Code to deploy apps, fix configs, and manage your server conversationally. AI with full server access, your approval required.",
   },
 ];
 
@@ -114,7 +115,7 @@ export function HowItWorks() {
       <div className="border border-white/[0.08] rounded-lg overflow-hidden relative">
         <div className="h-[3px] bg-zinc-800">
           <div
-            className="h-full bg-gradient-to-r from-primary via-purple-300 to-primary"
+            className="h-full bg-gradient-to-r from-primary via-yellow-200 to-primary"
             style={{ width: `${barProgress * 100}%` }}
           />
         </div>

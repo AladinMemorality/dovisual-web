@@ -3,7 +3,7 @@
 @theme inline {
   --color-background: #000000;
   --color-foreground: #ffffff;
-  --color-primary: #A78BFA;
+  --color-primary: #F4F90A;
   --color-surface: #131315;
   --color-surface-container: #201f22;
   --color-outline-variant: #27272A;
@@ -51,7 +51,7 @@ body {
 }
 
 ::selection {
-  background-color: rgba(167, 139, 250, 0.2);
+  background-color: rgba(244, 249, 10, 0.2);
   color: white;
 }
 
