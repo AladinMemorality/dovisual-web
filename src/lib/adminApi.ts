@@ -101,3 +101,86 @@ export async function deleteApp(id: string): Promise<void> {
     throw new Error(err.detail || "Failed to delete app");
   }
 }
+
+// --- Users ---
+
+export interface UserSummary {
+  id: number;
+  email: string;
+  verified: boolean;
+  created_at: string;
+  server_count: number;
+  vm_count: number;
+}
+
+export interface ServerInfo {
+  id: number;
+  name: string;
+  domain: string | null;
+  ip: string | null;
+  vmid: number | null;
+  ipv6: string | null;
+  pin: string | null;
+  status: string;
+  cores: number;
+  memory_mb: number;
+  disk_gb: number;
+  created_at: string;
+}
+
+export interface UserDetail {
+  id: number;
+  email: string;
+  verified: boolean;
+  created_at: string;
+  verified_at: string | null;
+  servers: ServerInfo[];
+}
+
+export async function listUsers(): Promise<UserSummary[]> {
+  const res = await adminFetch("/admin/users");
+  const data = await res.json();
+  return data.users;
+}
+
+export async function getUser(id: number): Promise<UserDetail> {
+  const res = await adminFetch(`/admin/users/${id}`);
+  if (!res.ok) throw new Error("User not found");
+  return res.json();
+}
+
+export interface ProvisionResult {
+  ok: boolean;
+  server_id: number;
+  vmid: number;
+  domain: string;
+  ipv6: string;
+  pin: string;
+  status: string;
+}
+
+export async function adminProvision(data: {
+  email: string;
+  name: string;
+  pin: string;
+}): Promise<ProvisionResult> {
+  const res = await adminFetch("/admin/provision", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.detail || "Provisioning failed");
+  }
+  return res.json();
+}
+
+export async function adminDeprovision(serverId: number): Promise<void> {
+  const res = await adminFetch(`/admin/servers/${serverId}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.detail || "Deprovision failed");
+  }
+}

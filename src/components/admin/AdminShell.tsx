@@ -7,6 +7,7 @@ import { getAdminKey, clearAdminKey } from "@/lib/adminAuth";
 
 const NAV_ITEMS = [
   { label: "Apps", href: "/admin/apps" },
+  { label: "Users", href: "/admin/users" },
 ];
 
 export default function AdminShell({ children }: { children: React.ReactNode }) {
