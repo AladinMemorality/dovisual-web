@@ -41,8 +41,8 @@ jobs:
             -e "ssh -i ~/.ssh/deploy_key" \
             .next/static/ root@$HOST:/opt/dovisual-web/.next/static/
 
-          # Copy public assets
-          rsync -avz --delete \
+          # Copy public assets (preserve downloads/ which is managed by dovi-server CI)
+          rsync -avz --delete --exclude='downloads/' \
             -e "ssh -i ~/.ssh/deploy_key" \
             public/ root@$HOST:/opt/dovisual-web/public/
 
