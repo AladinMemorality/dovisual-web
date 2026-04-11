@@ -420,7 +420,7 @@ export default function AppForm({ initial, isEdit, onSubmit }: Props) {
                 onChange={(e) =>
                   setGitHubInstructions(e.target.value, ghFolder)
                 }
-                placeholder="dovisual/dovi-webapps"
+                placeholder="AladinMemorality/dovi-instructions"
               />
             </Field>
             <Field label="Folder" hint="path within repo">
@@ -489,7 +489,7 @@ export default function AppForm({ initial, isEdit, onSubmit }: Props) {
                   onChange={(e) =>
                     setGitHubInstructions(e.target.value, ghFolder)
                   }
-                  placeholder="dovisual/dovi-instructions"
+                  placeholder="AladinMemorality/dovi-instructions"
                 />
               </Field>
               <Field label="Folder" hint="path within repo">
