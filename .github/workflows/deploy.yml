@@ -31,8 +31,8 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H $HOST >> ~/.ssh/known_hosts 2>/dev/null
 
-          # Copy standalone build
-          rsync -avz --delete \
+          # Copy standalone build (exclude public/ — it's synced separately below)
+          rsync -avz --delete --exclude='public/' \
             -e "ssh -i ~/.ssh/deploy_key" \
             .next/standalone/ root@$HOST:/opt/dovisual-web/
 
