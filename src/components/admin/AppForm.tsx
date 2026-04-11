@@ -119,6 +119,16 @@ export default function AppForm({ initial, isEdit, onSubmit }: Props) {
     }
   }, [form.label, isEdit, idLocked]);
 
+  // Auto-fill target for webview apps when GitHub source is set
+  useEffect(() => {
+    if (form.app_type === "webview" && form.id && form.instructions_archive_url) {
+      const expected = `/webapps/${form.id}/`;
+      if (!form.target || form.target.startsWith("/webapps/")) {
+        set("target", expected);
+      }
+    }
+  }, [form.app_type, form.id, form.instructions_archive_url]);
+
   // Parse GitHub instructions into repo + folder fields
   const isGitHubInstructions =
     form.instructions_archive_url.startsWith("github:");
@@ -341,12 +351,23 @@ export default function AppForm({ initial, isEdit, onSubmit }: Props) {
               <option value="installable">Installable</option>
             </select>
           </Field>
-          <Field label="Target" hint="Route path or URL">
+          <Field
+            label="Target"
+            hint={
+              form.app_type === "webview"
+                ? "Full URL or /webapps/<id>/ for server-hosted"
+                : "Route path or URL"
+            }
+          >
             <input
               className={inputClass}
               value={form.target}
               onChange={(e) => set("target", e.target.value)}
-              placeholder="e.g. /docker"
+              placeholder={
+                form.app_type === "webview"
+                  ? `/webapps/${form.id || "app-id"}/`
+                  : "e.g. /docker"
+              }
               required
             />
           </Field>
@@ -378,8 +399,46 @@ export default function AppForm({ initial, isEdit, onSubmit }: Props) {
         </div>
       </div>
 
+      {/* WebApp Source (for webview apps) */}
+      {form.app_type === "webview" && (
+        <div className="space-y-4 rounded-lg border border-outline-variant p-4">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">
+            WebApp Source
+          </h3>
+          <p className="text-[11px] text-on-surface-variant/60">
+            HTML/JS/CSS files from a GitHub repo will be deployed to the server
+            when the app is opened. Target should be{" "}
+            <code className="rounded bg-surface-container px-1 font-mono">
+              /webapps/{form.id || "<app-id>"}/
+            </code>
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Field label="GitHub Repo" hint="owner/repo">
+              <input
+                className={inputClass + " font-mono text-xs"}
+                value={ghRepo}
+                onChange={(e) =>
+                  setGitHubInstructions(e.target.value, ghFolder)
+                }
+                placeholder="dovisual/dovi-webapps"
+              />
+            </Field>
+            <Field label="Folder" hint="path within repo">
+              <input
+                className={inputClass + " font-mono text-xs"}
+                value={ghFolder}
+                onChange={(e) =>
+                  setGitHubInstructions(ghRepo, e.target.value)
+                }
+                placeholder={form.id || "app-name"}
+              />
+            </Field>
+          </div>
+        </div>
+      )}
+
       {/* Install Configuration */}
-      {(form.app_type === "installable" || form.install_cmd) && (
+      {form.app_type === "installable" && (
         <div className="space-y-4 rounded-lg border border-outline-variant p-4">
           <h3 className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">
             Install Configuration
