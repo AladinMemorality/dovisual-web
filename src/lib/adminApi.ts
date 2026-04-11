@@ -48,6 +48,8 @@ export interface AppData {
   target: string;
   order: number;
   enabled: boolean;
+  category: string | null;
+  description: string | null;
   installCmd: string | null;
   uninstallCmd: string | null;
   checkCmd: string | null;

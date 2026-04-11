@@ -21,6 +21,8 @@ export default function NewAppPage() {
       target: data.target,
       sort_order: data.sort_order,
       enabled: data.enabled,
+      category: data.category || null,
+      description: data.description || null,
       install_cmd: data.install_cmd || null,
       uninstall_cmd: data.uninstall_cmd || null,
       check_cmd: data.check_cmd || null,
