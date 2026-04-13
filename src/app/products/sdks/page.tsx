@@ -26,14 +26,14 @@ const integrations = [
   },
   {
     label: "CLI",
-    title: "npm install -g dovisual",
-    desc: "Install the CLI for server setup and configuration. Authenticate, configure, and manage your VPS from any terminal.",
-    install: "npm install -g dovisual",
+    title: "curl -fsSL dovisual.com/downloads/install.sh | bash",
+    desc: "Install the Dovi binary for server setup and configuration. Configure and manage your VPS from any terminal.",
+    install: "curl -fsSL https://dovisual.com/downloads/install.sh | bash",
     features: [
-      "8 CLI commands for full control",
+      "15 CLI commands for full control",
       "One-command server setup",
       "PIN-based authentication",
-      "Node.js 18+ and Bun supported",
+      "Standalone binary, no runtime dependencies",
     ],
   },
   {

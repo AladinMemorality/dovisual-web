@@ -14,43 +14,78 @@ export const metadata: Metadata = {
 const commands = [
   {
     name: "dovi install",
-    desc: "Set up DoVisual on your VPS. Configures systemd, nginx, SSL, and the API server. Production-ready in 90 seconds.",
-    flags: ["--domain", "--port", "--ssl"],
-  },
-  {
-    name: "dovi config set",
-    desc: "Update server configuration values. Set your domain, port, SSL mode, or any other runtime option.",
-    flags: ["--key", "--value"],
-  },
-  {
-    name: "dovi start",
-    desc: "Start the DoVisual API server. Launches the systemd service and begins accepting connections.",
-    flags: ["--foreground"],
-  },
-  {
-    name: "dovi status",
-    desc: "Check the current state of the DoVisual service. Shows uptime, port, domain, and connection status.",
-    flags: ["--json"],
-  },
-  {
-    name: "dovi pin",
-    desc: "Display or generate your authentication PIN. Used to pair the mobile app and obtain JWT tokens.",
-    flags: ["--reset"],
+    desc: "Set up Dovi on your VPS. Configures systemd, nginx, SSL, and the API server. Production-ready in 90 seconds.",
+    flags: ["--email", "--domain", "--name", "--pin"],
   },
   {
     name: "dovi update",
-    desc: "Update DoVisual to the latest version. Downloads the newest release and restarts the service automatically.",
-    flags: ["--force"],
+    desc: "Download the latest Dovi binary and restart the service. Checks the version API for the newest release.",
+    flags: [],
+  },
+  {
+    name: "dovi uninstall",
+    desc: "Remove the Dovi service, nginx config, and systemd unit. Clean removal from your server.",
+    flags: [],
+  },
+  {
+    name: "dovi start",
+    desc: "Start the Dovi server in the foreground. Launches the API, terminal multiplexer, and WebSocket connections.",
+    flags: ["--port", "--host"],
+  },
+  {
+    name: "dovi stop",
+    desc: "Stop the Dovi systemd service. Gracefully shuts down the API server and all active connections.",
+    flags: [],
   },
   {
     name: "dovi restart",
-    desc: "Restart the DoVisual API server. Applies any pending configuration changes and refreshes the service.",
-    flags: ["--graceful"],
+    desc: "Restart the Dovi systemd service. Applies any pending configuration changes.",
+    flags: [],
+  },
+  {
+    name: "dovi status",
+    desc: "Show service status: uptime, domain, port, and connection info.",
+    flags: [],
   },
   {
     name: "dovi config",
-    desc: "View the current server configuration. Shows domain, port, SSL status, and all active settings.",
-    flags: ["--json"],
+    desc: "Show current configuration as JSON: domain, port, shell, AI setup status, and all active settings.",
+    flags: [],
+  },
+  {
+    name: "dovi config set <key> <value>",
+    desc: "Update a config value. Set domain, port, shell, AI credentials, and more. Stored in /etc/dovi/config.json.",
+    flags: [],
+  },
+  {
+    name: "dovi domain create",
+    desc: "Create a subdomain with nginx config and Cloudflare DNS record. Automatic SSL provisioning.",
+    flags: ["[name]"],
+  },
+  {
+    name: "dovi domain list",
+    desc: "List all active domains and subdomains configured on this server.",
+    flags: [],
+  },
+  {
+    name: "dovi domain delete",
+    desc: "Remove a domain, its nginx config, and the associated DNS record.",
+    flags: ["<name>"],
+  },
+  {
+    name: "dovi pin",
+    desc: "Display your 6-digit authentication PIN. Used to pair the mobile app and obtain JWT tokens.",
+    flags: [],
+  },
+  {
+    name: "dovi pin reset",
+    desc: "Generate a new 6-digit PIN. Invalidates the previous PIN immediately.",
+    flags: [],
+  },
+  {
+    name: "dovi version",
+    desc: "Show the current Dovi version and build ID.",
+    flags: [],
   },
 ];
 
@@ -96,10 +131,10 @@ export default function CliPage() {
             <h3 className="text-2xl font-bold tracking-tight leading-tight">
               Up and running
               <br />
-              in three commands
+              in one command
             </h3>
             <p className="text-zinc-500 text-sm">
-              Install the CLI, run the installer, check the status.
+              Run the installer and check the status.
               Your server is ready.
             </p>
           </div>
@@ -107,18 +142,14 @@ export default function CliPage() {
             <div className="space-y-0">
               <div>
                 <span className="text-primary">$ </span>
-                <span className="text-zinc-300">npm install -g dovisual</span>
-              </div>
-              <div>
-                <span className="text-primary">$ </span>
-                <span className="text-zinc-300">dovi install</span>
+                <span className="text-zinc-300">curl -fsSL https://dovisual.com/downloads/install.sh | bash</span>
               </div>
               <div>
                 <span className="text-zinc-500">
-                  &nbsp; Configuring systemd{" "}
+                  &nbsp; Downloading Dovi{" "}
                 </span>
                 <span className="text-blue-400">&rarr;</span>
-                <span className="text-zinc-500"> setting up nginx </span>
+                <span className="text-zinc-500"> configuring systemd </span>
                 <span className="text-blue-400">&rarr;</span>
                 <span className="text-primary"> SSL provisioned</span>
               </div>
@@ -127,7 +158,7 @@ export default function CliPage() {
                 <span className="text-zinc-300">dovi status</span>
               </div>
               <div className="text-primary">
-                &nbsp; &#10003; DoVisual running on port 3000
+                &nbsp; &#10003; Dovi running on port 3100
               </div>
               <div className="text-primary">
                 &nbsp; &#10003; Nginx configured with SSL
@@ -146,16 +177,16 @@ export default function CliPage() {
       <section className="max-w-[1120px] mx-auto px-8 py-28">
         <SectionLabel>CLI Commands</SectionLabel>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-3">
-          Eight essential commands.
+          Complete CLI.
           <br />
-          Complete server control.
+          Full server control.
         </h2>
         <p className="text-zinc-500 max-w-xl mb-12 text-sm">
-          Install, configure, start, stop, restart, monitor, update, and
-          authenticate your DoVisual server from a single CLI.
+          Install, configure, start, stop, restart, monitor, update, manage
+          domains, and authenticate your Dovi server from a single CLI.
         </p>
 
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {commands.map((cmd) => (
             <div
               key={cmd.name}
@@ -225,7 +256,7 @@ export default function CliPage() {
             Install the CLI. Set up your server.
           </h2>
           <p className="text-zinc-500 mt-4 mb-8 max-w-md mx-auto text-sm relative z-10">
-            Three commands. Production-ready in 90 seconds.
+            One command. Production-ready in 90 seconds.
           </p>
           <GetStartedButton className="px-6 py-3 bg-primary text-black font-semibold rounded-lg hover:brightness-110 transition-all text-sm relative z-10">
             Get started free

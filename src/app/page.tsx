@@ -127,10 +127,10 @@ export default function Home() {
               <h3 className="text-2xl font-bold tracking-tight leading-tight">
                 Up and running
                 <br />
-                in three commands
+                in one command
               </h3>
               <p className="text-zinc-500 text-sm">
-                Install the CLI, set up your server, connect from your phone.
+                Run the installer, connect from your phone.
                 Everything after that is at your fingertips.
               </p>
             </div>
@@ -138,11 +138,10 @@ export default function Home() {
               <div className="space-y-0">
                 <div>
                   <span className="text-primary">$ </span>
-                  <span className="text-zinc-300">npm install -g dovisual</span>
+                  <span className="text-zinc-300">curl -fsSL https://dovisual.com/downloads/install.sh | bash</span>
                 </div>
-                <div>
-                  <span className="text-primary">$ </span>
-                  <span className="text-zinc-300">dovi install</span>
+                <div className="text-primary">
+                  &nbsp; &#10003; Binary installed
                 </div>
                 <div className="text-primary">
                   &nbsp; &#10003; Server configured
@@ -167,7 +166,7 @@ export default function Home() {
             CLI &amp; API
           </span>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-3">
-            Eight capabilities.
+            Complete CLI.
             <br />
             One unified platform.
           </h2>
@@ -176,46 +175,81 @@ export default function Home() {
             The CLI sets up your server. The app is your daily interface.
           </p>
 
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               {
                 name: "dovi install",
                 desc: "Set up Dovi on any VPS. Installs systemd service, nginx reverse proxy, and SSL certificates. One command, full stack.",
-                flags: ["--domain", "--email", "--name"],
-              },
-              {
-                name: "dovi config set",
-                desc: "Configure your server: domain, port, shell, AI credentials. All settings stored in /etc/dovi/config.json.",
-                flags: ["--port", "--domain", "--shell"],
-              },
-              {
-                name: "dovi start",
-                desc: "Start the Dovi server. Launches the API, terminal multiplexer, and WebSocket connections.",
-                flags: ["--port", "--host"],
-              },
-              {
-                name: "dovi status",
-                desc: "Check service health: uptime, CPU, memory, disk, running containers, and active terminal sessions.",
-                flags: [],
-              },
-              {
-                name: "dovi pin",
-                desc: "View or reset your 6-digit authentication PIN. PIN-based auth keeps your server secure from mobile.",
-                flags: ["reset"],
+                flags: ["--email", "--domain", "--name", "--pin"],
               },
               {
                 name: "dovi update",
-                desc: "Download the latest Dovi binary and restart the service. Zero-downtime upgrades.",
+                desc: "Download the latest Dovi binary and restart the service. Checks the version API for the newest release.",
+                flags: [],
+              },
+              {
+                name: "dovi uninstall",
+                desc: "Remove the Dovi service, nginx config, and systemd unit. Clean removal from your server.",
+                flags: [],
+              },
+              {
+                name: "dovi start",
+                desc: "Start the Dovi server in the foreground. Launches the API, terminal multiplexer, and WebSocket connections.",
+                flags: ["--port", "--host"],
+              },
+              {
+                name: "dovi stop",
+                desc: "Stop the Dovi systemd service. Gracefully shuts down the API server and all active connections.",
                 flags: [],
               },
               {
                 name: "dovi restart",
-                desc: "Restart the Dovi service. Preserves terminal sessions and container state.",
+                desc: "Restart the Dovi systemd service. Applies any pending configuration changes.",
+                flags: [],
+              },
+              {
+                name: "dovi status",
+                desc: "Show service status: uptime, domain, port, and connection info.",
                 flags: [],
               },
               {
                 name: "dovi config",
-                desc: "Show current configuration: domain, port, shell, AI setup status, and active devices.",
+                desc: "Show current configuration: domain, port, shell, AI setup status, and all active settings as JSON.",
+                flags: [],
+              },
+              {
+                name: "dovi config set <key> <value>",
+                desc: "Update a config value. Set domain, port, shell, AI credentials, and more. Stored in /etc/dovi/config.json.",
+                flags: [],
+              },
+              {
+                name: "dovi domain create",
+                desc: "Create a subdomain with nginx config and Cloudflare DNS record. Automatic SSL provisioning.",
+                flags: ["[name]"],
+              },
+              {
+                name: "dovi domain list",
+                desc: "List all active domains and subdomains configured on this server.",
+                flags: [],
+              },
+              {
+                name: "dovi domain delete",
+                desc: "Remove a domain, its nginx config, and the associated DNS record.",
+                flags: ["<name>"],
+              },
+              {
+                name: "dovi pin",
+                desc: "Display your 6-digit authentication PIN. Used to pair the mobile app and obtain JWT tokens.",
+                flags: [],
+              },
+              {
+                name: "dovi pin reset",
+                desc: "Generate a new 6-digit PIN. Invalidates the previous PIN immediately.",
+                flags: [],
+              },
+              {
+                name: "dovi version",
+                desc: "Show the current Dovi version and build ID.",
                 flags: [],
               },
             ].map((cmd) => (
@@ -539,7 +573,7 @@ export default function Home() {
 
           <FaqItem
             question="How does it work?"
-            answer="Install the dovi CLI on any Ubuntu VPS, run dovi install, and your server is configured with systemd, nginx, and SSL in under 90 seconds. Open the DoVisual app on your phone, enter your PIN, and you have full terminal, Docker, file, and AI access."
+            answer="Run the Dovi installer on any Ubuntu VPS and your server is configured with systemd, nginx, and SSL in under 90 seconds. Open the DoVisual app on your phone, enter your PIN, and you have full terminal, Docker, file, and AI access."
             defaultOpen
           />
           <FaqItem

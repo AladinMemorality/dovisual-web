@@ -99,12 +99,12 @@ export default function DocsPage() {
           <div className="space-y-3">
             <SectionLabel>Quick Start</SectionLabel>
             <h3 className="text-2xl font-bold tracking-tight leading-tight">
-              Three commands.
+              One command.
               <br />
               Five minutes.
             </h3>
             <p className="text-zinc-500 text-sm">
-              Install the CLI, set up your server, and check the status.
+              Run the installer, check the status, and you&apos;re ready.
               Everything after that is managed from your phone.
             </p>
           </div>
@@ -112,11 +112,7 @@ export default function DocsPage() {
             <div className="space-y-0">
               <div>
                 <span className="text-primary">$ </span>
-                <span className="text-zinc-300">npm install -g dovisual</span>
-              </div>
-              <div>
-                <span className="text-primary">$ </span>
-                <span className="text-zinc-300">dovi install</span>
+                <span className="text-zinc-300">curl -fsSL https://dovisual.com/downloads/install.sh | bash</span>
               </div>
               <div>
                 <span className="text-primary">$ </span>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 
-const COMMAND = "npm i -g dovisual";
+const COMMAND = "curl -fsSL https://dovisual.com/downloads/install.sh | bash";
 
 export function InstallModal({
   open,
@@ -117,9 +117,9 @@ export function GetStartedButton({
 }
 
 const CONNECT_STEPS = [
-  { label: "Install the CLI", command: "npm i -g dovisual" },
-  { label: "Authenticate", command: "dovi auth" },
-  { label: "Connect to Claude", command: "dovi setup-mcp" },
+  { label: "Install Dovi on your server", command: "curl -fsSL https://dovisual.com/downloads/install.sh | bash", isCommand: true },
+  { label: "Open the DoVisual app", command: "Go to AI Setup in the app menu", isCommand: false },
+  { label: "Connect Claude Code", command: "Follow the OAuth flow to authenticate", isCommand: false },
 ];
 
 function CopyButton({ text }: { text: string }) {
@@ -197,16 +197,16 @@ export function ConnectClaudeModal({
                   Step {i + 1} &mdash; {step.label}
                 </div>
                 <div className="flex items-center justify-between gap-3 bg-white/[0.02] rounded-lg border border-white/[0.06] px-4 py-3">
-                  <div className="font-mono text-[13px] overflow-x-auto">
-                    <span className="text-primary">$ </span>
+                  <div className={`text-[13px] overflow-x-auto ${step.isCommand ? "font-mono" : ""}`}>
+                    {step.isCommand && <span className="text-primary">$ </span>}
                     <span className="text-zinc-300">{step.command}</span>
                   </div>
-                  <CopyButton text={step.command} />
+                  {step.isCommand && <CopyButton text={step.command} />}
                 </div>
               </div>
             ))}
             <p className="text-[12px] text-zinc-600 pt-1">
-              35 MCP tools will be available once connected.
+              Claude Code and Codex will be available once connected.
             </p>
           </div>
         </div>
