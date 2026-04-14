@@ -96,7 +96,7 @@ export default function IconPicker({
             <img
               src={selectedName}
               alt=""
-              className="h-7 w-7 object-contain brightness-0 invert"
+              className="h-7 w-7 object-contain"
             />
           ) : (
             <span className="text-xs text-on-surface-variant">+</span>
