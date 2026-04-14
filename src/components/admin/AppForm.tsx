@@ -22,6 +22,7 @@ export interface AppFormData {
   check_cmd: string;
   instructions_url: string;
   instructions_archive_url: string;
+  version: string;
 }
 
 const EMPTY: AppFormData = {
@@ -43,6 +44,7 @@ const EMPTY: AppFormData = {
   check_cmd: "",
   instructions_url: "",
   instructions_archive_url: "",
+  version: "",
 };
 
 const COLOR_PRESETS = [
@@ -393,6 +395,14 @@ export default function AppForm({ initial, isEdit, onSubmit }: Props) {
               onChange={(e) =>
                 set("sort_order", parseInt(e.target.value) || 0)
               }
+            />
+          </Field>
+          <Field label="Version" hint="Bump to trigger updates on devices">
+            <input
+              className={inputClass + " w-32"}
+              value={form.version}
+              onChange={(e) => set("version", e.target.value)}
+              placeholder="e.g. 1.0.0"
             />
           </Field>
           <Field label="Enabled">

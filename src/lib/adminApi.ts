@@ -55,6 +55,7 @@ export interface AppData {
   checkCmd: string | null;
   instructionsUrl: string | null;
   instructionsArchiveUrl: string | null;
+  version: string | null;
 }
 
 export async function listApps(): Promise<AppData[]> {
