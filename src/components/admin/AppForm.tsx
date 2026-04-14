@@ -129,6 +129,20 @@ export default function AppForm({ initial, isEdit, onSubmit }: Props) {
     }
   }, [form.app_type, form.id, form.instructions_archive_url]);
 
+  // Auto-generate check/uninstall commands for deployable webview apps
+  useEffect(() => {
+    if (form.app_type === "webview" && form.id && form.instructions_archive_url) {
+      const expectedCheck = `test -d ~/dovi-webapps/${form.id}`;
+      const expectedUninstall = `rm -rf ~/dovi-webapps/${form.id}`;
+      if (!form.check_cmd || form.check_cmd.startsWith("test -d ~/dovi-webapps/")) {
+        set("check_cmd", expectedCheck);
+      }
+      if (!form.uninstall_cmd || form.uninstall_cmd.startsWith("rm -rf ~/dovi-webapps/")) {
+        set("uninstall_cmd", expectedUninstall);
+      }
+    }
+  }, [form.app_type, form.id, form.instructions_archive_url]);
+
   // Parse GitHub instructions into repo + folder fields
   const isGitHubInstructions =
     form.instructions_archive_url.startsWith("github:");
@@ -195,7 +209,7 @@ export default function AppForm({ initial, isEdit, onSubmit }: Props) {
           </p>
         </div>
         <div className="rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
-          {form.app_type === "installable" ? "GET" : "Open"}
+          {form.app_type === "installable" || (form.app_type === "webview" && form.instructions_archive_url) ? "GET" : "Open"}
         </div>
       </div>
 
@@ -434,6 +448,34 @@ export default function AppForm({ initial, isEdit, onSubmit }: Props) {
               />
             </Field>
           </div>
+
+          {/* Auto-generated lifecycle commands */}
+          {form.instructions_archive_url && form.id && (
+            <div className="mt-3 space-y-2 rounded-lg border border-outline-variant/50 bg-surface-container/30 p-3">
+              <p className="text-xs font-medium text-on-surface-variant">
+                Auto-generated Commands
+              </p>
+              <p className="text-[11px] text-on-surface-variant/60">
+                These commands are auto-generated for deploy lifecycle management.
+              </p>
+              <div className="grid gap-2 sm:grid-cols-2">
+                <Field label="Check Command" hint="Exit 0 = deployed">
+                  <input
+                    className={inputClass + " font-mono text-xs text-on-surface-variant"}
+                    value={form.check_cmd}
+                    readOnly
+                  />
+                </Field>
+                <Field label="Uninstall Command">
+                  <input
+                    className={inputClass + " font-mono text-xs text-on-surface-variant"}
+                    value={form.uninstall_cmd}
+                    readOnly
+                  />
+                </Field>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
