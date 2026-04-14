@@ -190,7 +190,7 @@ export default function AppForm({ initial, isEdit, onSubmit }: Props) {
             <img
               src={form.icon_name}
               alt=""
-              className="h-8 w-8 object-contain"
+              className="h-8 w-8 object-contain brightness-0 invert"
             />
           ) : form.badge_text ? (
             <span className="font-mono text-base font-extrabold text-white">
