@@ -27,7 +27,9 @@ export default function EditAppPage({
           badge_color: app.badgeColor,
           badge_text: app.badgeText || "",
           icon_type: app.icon?.type || "",
-          icon_name: app.icon?.name || "",
+          icon_name: app.icon?.type === "image"
+            ? (app.icon?.url || app.icon?.name || "")
+            : (app.icon?.name || ""),
           app_type: app.appType,
           target: app.target,
           sort_order: app.order,

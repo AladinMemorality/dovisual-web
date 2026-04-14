@@ -43,7 +43,7 @@ export interface AppData {
   subtitle: string;
   badgeColor: string;
   badgeText: string | null;
-  icon: { type: string; name: string } | null;
+  icon: { type: string; name?: string; url?: string } | null;
   appType: string;
   target: string;
   order: number;
