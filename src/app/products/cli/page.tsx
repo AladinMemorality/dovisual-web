@@ -4,6 +4,7 @@ import { SectionLabel } from "@/components/SectionLabel";
 import { Divider } from "@/components/Divider";
 import { GetStartedButton } from "@/components/InstallModal";
 import { InstallTerminal } from "@/components/InstallTerminal";
+import { Terminal } from "@/components/Terminal";
 
 export const metadata: Metadata = {
   title: "CLI & Server Setup",
