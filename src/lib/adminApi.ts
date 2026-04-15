@@ -53,6 +53,7 @@ export interface AppData {
   installCmd: string | null;
   uninstallCmd: string | null;
   checkCmd: string | null;
+  mcpUrl: string | null;
   instructionsUrl: string | null;
   instructionsArchiveUrl: string | null;
   version: string | null;

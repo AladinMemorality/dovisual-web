@@ -7,7 +7,8 @@ import { Footer } from "@/components/Footer";
 import { Divider } from "@/components/Divider";
 import { FaqItem } from "@/components/FaqItem";
 import { HowItWorks } from "@/components/HowItWorks";
-import { GetStartedButton, ConnectClaudeButton } from "@/components/InstallModal";
+import { GetStartedButton } from "@/components/InstallModal";
+import { InstallTerminal } from "@/components/InstallTerminal";
 
 export const metadata: Metadata = {
   title: {
@@ -105,9 +106,6 @@ export default function Home() {
                 <GetStartedButton className="px-5 py-2.5 bg-primary text-black font-semibold rounded-lg hover:brightness-110 transition-all text-sm">
                   Get started free
                 </GetStartedButton>
-                <ConnectClaudeButton className="px-5 py-2.5 border border-white/[0.08] text-zinc-500 font-semibold rounded-lg hover:border-white/[0.15] hover:text-white transition-all text-sm">
-                  Connect to Claude
-                </ConnectClaudeButton>
               </div>
             </div>
             <HeroTerminal />
@@ -134,26 +132,7 @@ export default function Home() {
                 Everything after that is at your fingertips.
               </p>
             </div>
-            <Terminal label="terminal">
-              <div className="space-y-0">
-                <div>
-                  <span className="text-primary">$ </span>
-                  <span className="text-zinc-300">curl -fsSL https://dovisual.com/downloads/install.sh | bash</span>
-                </div>
-                <div className="text-primary">
-                  &nbsp; &#10003; Binary installed
-                </div>
-                <div className="text-primary">
-                  &nbsp; &#10003; Server configured
-                </div>
-                <div className="text-primary">
-                  &nbsp; &#10003; SSL issued
-                </div>
-                <div className="text-primary">
-                  &nbsp; &#10003; Ready — open the DoVisual app
-                </div>
-              </div>
-            </Terminal>
+            <InstallTerminal />
           </div>
         </section>
 

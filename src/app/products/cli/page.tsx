@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { PageLayout } from "@/components/PageLayout";
 import { SectionLabel } from "@/components/SectionLabel";
 import { Divider } from "@/components/Divider";
-import { Terminal } from "@/components/Terminal";
 import { GetStartedButton } from "@/components/InstallModal";
+import { InstallTerminal } from "@/components/InstallTerminal";
 
 export const metadata: Metadata = {
   title: "CLI & Server Setup",
@@ -138,36 +138,7 @@ export default function CliPage() {
               Your server is ready.
             </p>
           </div>
-          <Terminal label="terminal">
-            <div className="space-y-0">
-              <div>
-                <span className="text-primary">$ </span>
-                <span className="text-zinc-300">curl -fsSL https://dovisual.com/downloads/install.sh | bash</span>
-              </div>
-              <div>
-                <span className="text-zinc-500">
-                  &nbsp; Downloading Dovi{" "}
-                </span>
-                <span className="text-blue-400">&rarr;</span>
-                <span className="text-zinc-500"> configuring systemd </span>
-                <span className="text-blue-400">&rarr;</span>
-                <span className="text-primary"> SSL provisioned</span>
-              </div>
-              <div>
-                <span className="text-primary">$ </span>
-                <span className="text-zinc-300">dovi status</span>
-              </div>
-              <div className="text-primary">
-                &nbsp; &#10003; Dovi running on port 3100
-              </div>
-              <div className="text-primary">
-                &nbsp; &#10003; Nginx configured with SSL
-              </div>
-              <div className="text-primary">
-                &nbsp; &#10003; API ready at https://your-domain.com
-              </div>
-            </div>
-          </Terminal>
+          <InstallTerminal />
         </div>
       </section>
 

@@ -26,6 +26,7 @@ export default function NewAppPage() {
       install_cmd: data.install_cmd || null,
       uninstall_cmd: data.uninstall_cmd || null,
       check_cmd: data.check_cmd || null,
+      mcp_url: data.mcp_url || null,
       instructions_url: data.instructions_url || null,
       instructions_archive_url: data.instructions_archive_url || null,
     };

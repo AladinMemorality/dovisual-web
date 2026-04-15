@@ -39,6 +39,7 @@ export default function EditAppPage({
           install_cmd: app.installCmd || "",
           uninstall_cmd: app.uninstallCmd || "",
           check_cmd: app.checkCmd || "",
+          mcp_url: app.mcpUrl || "",
           instructions_url: app.instructionsUrl || "",
           instructions_archive_url: app.instructionsArchiveUrl || "",
         });
@@ -68,6 +69,7 @@ export default function EditAppPage({
       install_cmd: data.install_cmd || null,
       uninstall_cmd: data.uninstall_cmd || null,
       check_cmd: data.check_cmd || null,
+      mcp_url: data.mcp_url || null,
       instructions_url: data.instructions_url || null,
       instructions_archive_url: data.instructions_archive_url || null,
     };

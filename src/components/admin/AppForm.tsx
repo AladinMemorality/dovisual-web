@@ -20,6 +20,7 @@ export interface AppFormData {
   install_cmd: string;
   uninstall_cmd: string;
   check_cmd: string;
+  mcp_url: string;
   instructions_url: string;
   instructions_archive_url: string;
   version: string;
@@ -42,6 +43,7 @@ const EMPTY: AppFormData = {
   install_cmd: "",
   uninstall_cmd: "",
   check_cmd: "",
+  mcp_url: "",
   instructions_url: "",
   instructions_archive_url: "",
   version: "",
@@ -144,6 +146,19 @@ export default function AppForm({ initial, isEdit, onSubmit }: Props) {
       }
     }
   }, [form.app_type, form.id, form.instructions_archive_url]);
+
+  // Auto-generate check command and target for MCP apps
+  useEffect(() => {
+    if (form.app_type === "installable" && form.mcp_url && form.id) {
+      const expectedCheck = `grep -q "${form.id}" ~/.claude.json 2>/dev/null`;
+      if (!form.check_cmd || form.check_cmd.startsWith('grep -q "')) {
+        set("check_cmd", expectedCheck);
+      }
+      if (!form.target || form.target === "/app-detail/mcp") {
+        set("target", "/app-detail/mcp");
+      }
+    }
+  }, [form.app_type, form.mcp_url, form.id]);
 
   // Parse GitHub instructions into repo + folder fields
   const isGitHubInstructions =
@@ -486,6 +501,30 @@ export default function AppForm({ initial, isEdit, onSubmit }: Props) {
               </div>
             </div>
           )}
+        </div>
+      )}
+
+      {/* MCP Integration (for installable apps) */}
+      {form.app_type === "installable" && (
+        <div className="space-y-4 rounded-lg border border-outline-variant p-4">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">
+            MCP Integration
+          </h3>
+          <p className="text-[11px] text-on-surface-variant/60">
+            When set, the app uses MCP OAuth to connect — no install command
+            needed. The server auto-discovers OAuth endpoints from the MCP URL.
+          </p>
+          <Field
+            label="MCP Server URL"
+            hint="e.g. https://mcp.posthog.com/mcp — leave empty for non-MCP apps"
+          >
+            <input
+              className={inputClass + " font-mono text-xs"}
+              value={form.mcp_url}
+              onChange={(e) => set("mcp_url", e.target.value)}
+              placeholder="https://mcp.example.com/mcp"
+            />
+          </Field>
         </div>
       )}
 
