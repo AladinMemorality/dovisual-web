@@ -1,0 +1,31 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["35H9S79S43.com.dovisual.app"],
+        "components": [
+          {
+            "/": "/api/*",
+            "exclude": true,
+            "comment": "Exclude API routes"
+          },
+          {
+            "/": "/.well-known/*",
+            "exclude": true,
+            "comment": "Exclude well-known"
+          },
+          {
+            "/": "/_next/*",
+            "exclude": true,
+            "comment": "Exclude Next.js assets"
+          },
+          {
+            "/": "*",
+            "comment": "All other paths open in app"
+          }
+        ]
+      }
+    ]
+  }
+}
